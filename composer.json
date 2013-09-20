@@ -1,0 +1,14 @@
+{
+    "name": "mrphp/yii-skeleton",
+    "description": "Skeleton for a Yii framework app",
+    "license": "MIT",
+    "keywords": ["yii"],
+    "homepage": "http://yiidressing.mrphp.com.au/",
+    "require": {
+		"swiftmailer/swiftmailer": "v5.0.2",
+		"mrphp/yii-dressing": "dev-master",
+		"clevertech/yii-booster": "dev-master",
+        "yiisoft/yii": "1.1.14-rc",
+        "php": ">=5.3.0"
+    },
+}
