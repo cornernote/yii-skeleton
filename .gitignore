@@ -4,3 +4,4 @@ htroot/assets/*
 app/controllers/TestController.php
 app/views/test/*
 composer.phar
+vendor/*

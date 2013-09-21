@@ -10,5 +10,5 @@
 		"clevertech/yii-booster": "dev-master",
         "yiisoft/yii": "1.1.14-rc",
         "php": ">=5.3.0"
-    },
+    }
 }
