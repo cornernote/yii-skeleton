@@ -77,6 +77,7 @@ $config = array(
         ),
         'bootstrap' => array(
             'class' => 'bootstrap.components.Bootstrap',
+            'fontAwesomeCss' => true,
         ),
         'urlManager' => array(
             'urlFormat' => isset($_GET['r']) ? 'get' : 'path', // allow filters in audit/index work

@@ -35,9 +35,6 @@ if ($this->showNavBar) {
             $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
                 'links' => $this->breadcrumbs,
                 'separator' => '',
-                'htmlOptions' => array(
-                    'id' => 'breadcrumbs',
-                ),
             ));
         }
         echo user()->multiFlash();
