@@ -1,6 +1,6 @@
 <?php
 /**
- * @var $this WebController
+ * @var $this YdWebController
  * @var $content
  */
 
@@ -13,9 +13,9 @@
         'fixed' => 'top',
         //'fluid' => true,
         'collapse' => true,
-        'items' => Menu::topMenu(),
+        'items' => YdMenu::topMenu(),
         'constantItems' => array(
-            Menu::userMenu(),
+            YdMenu::userMenu(),
         ),
     ));
     ?>

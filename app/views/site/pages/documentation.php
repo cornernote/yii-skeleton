@@ -1,22 +1,20 @@
 <?php
 /**
- * @var $this WebController
+ * @var $this YdWebController
  */
 $this->pageTitle = $this->pageHeading = t('Documentation');
 
 // menu
-$this->menu = Menu::getItemsFromMenu('Help');
+$this->menu = YdMenu::getItemsFromMenu('Help');
 
 // breadcrumbs
-$this->breadcrumbs = array(
-    t('Help') => array('/site/page', 'view' => 'help'),
-    t('Documentation'),
-);
+$this->breadcrumbs[t('Help')] = array('/site/page', 'view' => 'help');
+$this->breadcrumbs[] = t('Documentation');
 
 echo '<h2>' . t('Vendor Documentation') . '</h2>';
 $this->widget('bootstrap.widgets.TbMenu', array(
     'type' => 'pills', // '', 'tabs', 'pills' (or 'list')
-    'stacked' => true, // whether this is a stacked menu
+    'stacked' => false,
     'items' => array(
         array('label' => t('Yii'), 'url' => 'http://www.yiiframework.com/doc/'),
         array('label' => t('YiiExt'), 'url' => 'http://yiiext.github.io/'),

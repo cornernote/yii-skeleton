@@ -1,6 +1,6 @@
 <?php
 /**
- * @var $this WebController
+ * @var $this YdWebController
  */
 
 if (Yii::app()->theme)

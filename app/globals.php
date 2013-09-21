@@ -1,15 +1,37 @@
 <?php
 
 /**
- * This is the shortcut to DIRECTORY_SEPARATOR
- */
-/**
- *
+ * Shortcut to DIRECTORY_SEPARATOR
  */
 defined('DS') or define('DS', DIRECTORY_SEPARATOR);
 
 /**
- * This is the shortcut to Yii::app()
+ * Debug your variables in the coolest way possible
+ *
+ * @param $var
+ * @param string $name
+ */
+function debug($var, $name = '')
+{
+    $bt = debug_backtrace();
+    $file = str_replace(bp(), '', $bt[0]['file']);
+    print '<div style="background: #FFFBD6">';
+    $nameLine = $name ? '<b> <span style="font-size:18px;">' . $name . '</span></b> printr:<br/>' : '';
+    print '<span style="font-size:12px;">' . $nameLine . ' ' . $file . ' on line ' . $bt[0]['line'] . '</span>';
+    print '<div style="border:1px solid #000;">';
+    print '<pre>';
+    if (is_scalar($var))
+        var_dump($var);
+    elseif ($var instanceof CActiveRecord)
+        print_r($var->attributes);
+    else
+        print_r($var);
+    print '</pre></div></div>';
+}
+
+/**
+ * Shortcut to Yii::app()
+ *
  * @return WebApplication
  */
 function app()
@@ -18,32 +40,29 @@ function app()
 }
 
 /**
- * This is the shortcut to Yii::app()->clientScript
- * @return ClientScript
+ * Shortcut to Yii::app()->clientScript
+ *
+ * @return YdClientScript
  */
 function cs()
 {
-    // You could also call the client script instance via Yii::app()->clientScript
-    // But this is faster
-    return app()->getClientScript();
+    return Yii::app()->getClientScript();
 }
 
 /**
- * This is the shortcut to Yii::app()->user.
- * @return WebUser
+ * Shortcut to Yii::app()->user
+ *
+ * @return YdWebUser
  */
 function user()
 {
-    if (!isset(app()->user)) {
-        return false;
-    }
-    return app()->user;
+    return Yii::app()->getUser();
 }
 
 /**
  * URL
- * eg:
- * url('/example/view', array('id'=>$this->id);
+ * eg: url('/example/view', array('id' => $model->id);
+ *
  * @param $route
  * @param array $params
  * @param string $ampersand
@@ -51,18 +70,13 @@ function user()
  */
 function url($route, $params = array(), $ampersand = '&')
 {
-    if (is_array($route)) {
-        $params = CMap::mergeArray($route, $params);
-        $route = $params[0];
-        unset($params[0]);
-    }
     return Yii::app()->createUrl($route, $params, $ampersand);
 }
 
 /**
  * Absolute URL
- * eg:
- * absoluteUrl('/example/view', array('id'=>$this->id);
+ * eg: absoluteUrl('/example/view', array('id' => $model->id);
+ *
  * @param $route
  * @param array $params
  * @param string $schema
@@ -76,6 +90,7 @@ function absoluteUrl($route, $params = array(), $schema = '', $ampersand = '&')
 
 /**
  * HTTP Request
+ *
  * @return CHttpRequest
  */
 function request()
@@ -85,6 +100,7 @@ function request()
 
 /**
  * Request Uri
+ *
  * @return string
  */
 function ru()
@@ -94,16 +110,18 @@ function ru()
 
 /**
  * Parse Url
+ *
  * @param $url
  * @return string
  */
 function parseUrl($url)
 {
-    return Yii::app()->urlManager->parseUrl($url);
+    return Yii::app()->getUrlManager()->parseUrl($url);
 }
 
 /**
  * HTML Encode
+ *
  * @param $text
  * @return string
  */
@@ -114,8 +132,7 @@ function h($text)
 
 /**
  * Link
- * eg:
- * echo l(t('click here'), array('/example/view', 'id' => $this->id));
+ * eg: echo l(t('click here'), array('/example/view', 'id' => $this->id));
  *
  * @param $text
  * @param string $url
@@ -129,6 +146,7 @@ function l($text, $url = '#', $htmlOptions = array())
 
 /**
  * Image
+ *
  * @param $image
  * @param string $alt
  * @param array $htmlOptions
@@ -141,6 +159,7 @@ function i($image, $alt = '', $htmlOptions = array())
 
 /**
  * Translate
+ *
  * @param $message
  * @param string $category
  * @param array $params
@@ -155,20 +174,17 @@ function t($message, $category = 'app', $params = array(), $source = null, $lang
 
 /**
  * Base Url
- * If the parameter is given, it will be returned and prefixed with the app baseUrl.
- * @param null $url
+ *
  * @return string
  */
-function bu($url = null)
+function bu()
 {
-    static $baseUrl;
-    if ($baseUrl === null)
-        $baseUrl = Yii::app()->getRequest()->getBaseUrl();
-    return $url === null ? $baseUrl : $baseUrl . '/' . ltrim($url, '/');
+    return Yii::app()->getRequest()->getBaseUrl();
 }
 
 /**
  * Base Path
+ *
  * @return string
  */
 function bp()
@@ -178,36 +194,37 @@ function bp()
 
 /**
  * Assets Url
+ *
  * @return string
  */
 function au()
 {
-    static $url;
-    if ($url)
-        return $url;
-    return $url = app()->getAssetManager()->publish(ap(), false, 1, YII_DEBUG);
+    return Yii::app()->getAssetManager()->publish(ap(), false, 1, YII_DEBUG);
 }
 
 /**
  * Assets Path
+ *
  * @return string
  */
 function ap()
 {
-    return bp() . DS . 'components' . DS . 'assets' . DS;
+    return Yii::getPathOfAlias('application.assets');
 }
 
 /**
  * Vendors Path
+ *
  * @return string
  */
 function vp()
 {
-    return dirname(dirname(bp())) . DS . 'vendors';
+    return Yii::getPathOfAlias('vendor');
 }
 
 /**
  * Htroot Path
+ *
  * @return string
  */
 function hp()
@@ -216,112 +233,72 @@ function hp()
 }
 
 /**
- * Returns the named application parameter.
- * This is the shortcut to Yii::app()->params[$name].
+ * Gets the named application parameter.
+ * Shortcut to Yii::app()->params[$name].
+ *
  * @param $name
  * @return bool
  */
 function param($name)
 {
-    if (!isset(Yii::app()->params[$name])) {
-        return false;
-    }
-    return Yii::app()->params[$name];
+    return isset(Yii::app()->params[$name]) ? Yii::app()->params[$name] : false;
 }
 
 /**
- * This is the shortcut to Yii::app()->cache
+ * Shortcut to Yii::app()->cache
+ *
  * @param string $cache mem|file
  * @return CCache
  */
-function cache($cache = 'mem')
+function cache($cache = null)
 {
-    if ($cache == 'file') {
+    if ($cache == 'file')
         $cache = 'cacheFile';
-    }
-    else {
+    elseif ($cache == 'db')
+        $cache = 'cacheDb';
+    else
         $cache = 'cache';
-    }
     return Yii::app()->$cache;
 }
 
 /**
- * This is the shortcut to Yii::app()->format
+ * Shortcut to Yii::app()->format
+ *
  * @return CFormatter
  */
 function format()
 {
-    return app()->format;
+    return Yii::app()->format;
 }
 
 /**
  * Gets a submitted field
- * used to be named getSubmittedField()
+ * Shortcut to YdHelper::getSubmittedField
+ *
+ * @param $field
+ * @param null $model
+ * @return null
  */
 function sf($field, $model = null)
 {
-    $return = null;
-    if ($model && isset($_GET[$model][$field])) {
-        $return = $_GET[$model][$field];
-    }
-    elseif ($model && isset($_POST[$model][$field])) {
-        $return = $_POST[$model][$field];
-    }
-    elseif (isset($_GET[$field])) {
-        $return = $_GET[$field];
-    }
-    elseif (isset($_POST[$field])) {
-        $return = $_POST[$field];
-    }
-    return $return;
+    return YdHelper::getSubmittedField($field, $model);
 }
 
 /**
- * @param $id
- * @return array
+ * Returns the a key in an array if it is set, otherwise returns false.
+ *
+ * @param $array
+ * @param $index
+ * @return bool
  */
-function sfGrid($id)
+function si($array, $index)
 {
-    $ids = array();
-    $gridData = array();
-    if (!empty($_REQUEST)) {
-        foreach ($_REQUEST as $k => $v) {
-            if (strpos($k, '-grid_c0') !== false) {
-                if (is_array($v)) {
-                    $gridData = $v;
-                }
-
-            }
-        }
-    }
-    if (!empty($gridData)) {
-        foreach ($gridData as $id) {
-            $ids[$id] = $id;
-        }
-    }
-    else {
-        if ($id) {
-            $ids[$id] = $id;
-        }
-    }
-    return $ids;
+    return isset($array[$index]) ? $array[$index] : false;
 }
 
 /**
- * @param null $id
- * @return string
- */
-function sfGridHidden($id = null)
-{
-    $inputs = array();
-    $ids = sfGrid($id);
-    foreach ($ids as $id) {
-        $inputs[] = CHtml::hiddenField('hidden-sf-grid_c0[]', $id);
-    }
-    return implode("\n", $inputs);
-}
-
-/**
+ * Is this an AJAX request
+ *
  * @return bool
  */
 function isAjax()
@@ -330,6 +307,8 @@ function isAjax()
 }
 
 /**
+ * Is this a Post request
+ *
  * @return bool
  */
 function isPost()
@@ -338,61 +317,31 @@ function isPost()
 }
 
 /**
+ * Is this a CLI request
+ *
  * @return bool
  */
 function isCli()
 {
-    return (substr(php_sapi_name(), 0, 3) == 'cli');
+    return YdHelper::isCli();
 }
 
 /**
+ * Is this a Mobile request
+ *
  * @return bool
  */
 function isMobile()
 {
-    return isset($_SERVER['HTTP_X_WAP_PROFILE']) || isset($_SERVER['HTTP_PROFILE']) || preg_match('/(nokia|iphone|android|motorola|^mot\-|softbank|foma|docomo|kddi|up\.browser|up\.link|htc|dopod|blazer|netfront|helio|hosin|huawei|novarra|CoolPad|webos|techfaith|palmsource|blackberry|alcatel|amoi|ktouch|nexian|samsung|^sam\-|s[cg]h|^lge|ericsson|philips|sagem|wellcom|bunjalloo|maui|symbian|smartphone|midp|wap|phone|windows ce|iemobile|^spice|^bird|^zte\-|longcos|pantech|gionee|^sie\-|portalmmm|jig\s browser|hiptop|^ucweb|^benq|haier|^lct|opera\s*mobi|opera\*mini|320x320|240x320|176x220)/i', $_SERVER['HTTP_USER_AGENT']);
+    return YdHelper::isMobileBrowser();
 }
 
 /**
+ * Is this a Front Page request
+ *
  * @return bool
  */
 function isFront()
 {
-    return (str_replace(url('/'), '', ru()) == '/');
-}
-
-/**
- * @return bool
- */
-function assetCopy()
-{
-    static $assetCopy = 'init';
-    if ($assetCopy != 'init')
-        return $assetCopy;
-
-    $assetCopy = YII_DEBUG;
-    if (!$assetCopy) {
-        $lastTime = cache()->get('AssetsAction.run');
-        if ((time() - $lastTime) < 30) {
-            return $assetCopy = true;
-        }
-    }
-    return $assetCopy;
-}
-
-/**
- * @param $var
- * @param string $name
- */
-function debug($var, $name = '')
-{
-    $bt = debug_backtrace();
-    $file = str_replace(bp(), '', $bt[0]['file']);
-    print '<div style="background: #FFFBD6">';
-    $nameLine = $name ? '<b> <span style="font-size:18px;">' . $name . '</span></b> printr:<br/>' : '';
-    print '<span style="font-size:12px;">' . $nameLine . ' ' . $file . ' on line ' . $bt[0]['line'] . '</span>';
-    print '<div style="border:1px solid #000;">';
-    print '<pre>';
-    is_scalar($var) ? var_dump($var) : print_r($var);
-    print '</pre></div></div>';
+    return YdHelper::isFrontPage();
 }

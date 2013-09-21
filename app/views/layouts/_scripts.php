@@ -1,16 +1,13 @@
 <?php
 /**
- * @var $this WebController
+ * @var $this YdWebController
  */
 
-// fix bootsrtap padding on top with responsive views
-if (!isset($this->showNavBar) || !$this->showNavBar) {
-    cs()->registerCSS('reset', 'body{padding-top:20px;}', '', array('order' => -6));
-}
-cs()->registerCSSFile(au() . '/css/style.css', '', array('order' => -6));
+// application stylesheet
+cs()->registerCSSFile(au() . '/css/style.css');
 
 // font awesome
-$this->widget('widgets.FontAwesome');
+//$this->widget('widgets.FontAwesome');
 
 // load here so modals don't have to load it
 cs()->registerCoreScript('yiiactiveform');

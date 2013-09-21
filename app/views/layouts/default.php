@@ -1,6 +1,6 @@
 <?php
 /**
- * @var $this WebController
+ * @var $this YdWebController
  * @var $content
  */
 if (app()->request->isAjaxRequest) {

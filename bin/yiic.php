@@ -9,19 +9,19 @@ if (substr(php_sapi_name(), 0, 3) != 'cli') {
 $_ENV['_start'] = microtime(true);
 
 // load core settings
-$core = dirname(__FILE__) . '/../app/core.php';
+$core = dirname(__FILE__) . '/../config.php';
 if (!file_exists($core)) {
     trigger_error('cannot find core file at "' . $core . '"', E_USER_ERROR);
 }
-$_ENV['_core'] = require($core);
+$_ENV['_config'] = require($core);
 
 // set debug levels
-if (!empty($_ENV['_core']['setting']['debug'])) {
+if (!empty($_ENV['_config']['setting']['debug'])) {
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
     ini_set('log_errors', 1);
     defined('YII_DEBUG') or define('YII_DEBUG', true);
-    defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL', $_ENV['_core']['setting']['debug']);
+    defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL', $_ENV['_config']['setting']['debug']);
 }
 else {
     error_reporting(0);
@@ -31,20 +31,20 @@ else {
 }
 
 // include global functions
-$globals = dirname(__FILE__) . '/../app/' . $_ENV['_core']['setting']['app_version'] . '/globals.php';
+$globals = dirname(__FILE__) . '/../' . $_ENV['_config']['setting']['app_version'] . '/globals.php';
 if (!file_exists($globals)) {
     trigger_error('cannot find globals file at "' . $globals . '"', E_USER_ERROR);
 }
 require_once($globals);
 
 // define path to congig
-$config = dirname(__FILE__) . '/../app/' . $_ENV['_core']['setting']['app_version'] . '/config/console.php';
+$config = dirname(__FILE__) . '/../' . $_ENV['_config']['setting']['app_version'] . '/config/cli.php';
 if (!file_exists($config)) {
     trigger_error('cannot find config file at "' . $config . '"', E_USER_ERROR);
 }
 
 // include Yiic
-$yiic = dirname(__FILE__) . '/../vendors/yii/' . $_ENV['_core']['setting']['yii_version'] . '/framework/yiic.php';
+$yiic = dirname(__FILE__) . '/../vendor/yiisoft/yii/framework/yiic.php';
 if (!file_exists($yiic)) {
     trigger_error('cannot find framework file at "' . $yiic . '"', E_USER_ERROR);
 }

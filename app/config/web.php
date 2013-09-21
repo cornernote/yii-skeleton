@@ -12,16 +12,10 @@ $config = require(dirname(__FILE__) . '/main.php');
 // web only preloads
 $config['preload'][] = 'bootstrap';
 
-// -- LOG ROUTES --
-// CDbLogRoute: saves messages in a database table.
-// CEmailLogRoute: sends messages to specified email addresses.
-// CFileLogRoute: saves messages in a file under the application runtime directory.
-// CWebLogRoute: displays messages at the end of the current Web page.
-// CProfileLogRoute: displays profiling messages at the end of the current Web page.
-
+// log routes
 $config['components']['log']['routes'] = array();
 if ($_ENV['_config']['setting']['debug']) {
-
+    // debug, web log route
     $config['components']['log']['routes'][] = array(
         'class' => 'CWebLogRoute',
         'levels' => $_ENV['_config']['setting']['debug_levels'],
@@ -29,46 +23,53 @@ if ($_ENV['_config']['setting']['debug']) {
     );
     if ($_ENV['_config']['setting']['debug_db']) {
         $config['components']['log']['routes'][] = array(
-            'class' => 'ProfileLogRoute',
+            'class' => 'YdProfileLogRoute',
             'levels' => 'profile',
         );
     }
-
 }
 else {
-
     // no debug, file log route
     $config['components']['log']['routes'][] = array(
         'class' => 'CFileLogRoute',
         'levels' => $_ENV['_config']['setting']['debug_levels'],
     );
-
 }
 
-// asset paths
+// assets
 $scriptName = dirname($_SERVER['SCRIPT_NAME']);
 if ($scriptName == '/') {
     $scriptName = '';
 }
 $config['components']['assetManager'] = array(
     'class' => 'CAssetManager',
-    'basePath' => dirname($_SERVER['SCRIPT_FILENAME']) . '/assets',
+    'basePath' => dirname($_SERVER['SCRIPT_FILENAME']) . DS . 'assets',
     'baseUrl' => $scriptName . '/assets',
 );
 
 // themes
 if (!empty($_ENV['_config']['setting']['theme'])) {
     $config['theme'] = $_ENV['_config']['setting']['theme'];
-    $config['components']['themeManager'] = array(
-        'basePath' => dirname(dirname(__FILE__)) . '/themes',
-    );
 }
-$config['params']['themes'] = array(
-    '' => 'Bootstrap',
-    'lite' => 'Lite',
-    'admingrey' => 'Admin Grey',
-    'bounce' => 'Bounce',
-    'reboot' => 'Reboot',
+$config['components']['themeManager'] = array(
+    'basePath' => dirname(dirname(__FILE__)) . DS . 'themes',
+);
+
+// controller map
+$config['controllerMap'] = array(
+    'account' => 'dressing.controllers.AccountController',
+    'attachment' => 'dressing.controllers.AttachmentController',
+    'audit' => 'dressing.controllers.AuditController',
+    'auditTrail' => 'dressing.controllers.AuditTrailController',
+    'contactUs' => 'dressing.controllers.ContactUsController',
+    'emailSpool' => 'dressing.controllers.EmailSpoolController',
+    'emailTemplate' => 'dressing.controllers.EmailTemplateController',
+    'error' => 'dressing.controllers.ErrorController',
+    'lookup' => 'dressing.controllers.LookupController',
+    'menu' => 'dressing.controllers.MenuController',
+    'role' => 'dressing.controllers.RoleController',
+    'setting' => 'dressing.controllers.SettingController',
+    'user' => 'dressing.controllers.UserController',
 );
 
 // local config overrides

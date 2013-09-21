@@ -1,6 +1,6 @@
 .idea
 runtime/*
-htroot/assets/*
+public/assets/*
 app/controllers/TestController.php
 app/views/test/*
 composer.phar

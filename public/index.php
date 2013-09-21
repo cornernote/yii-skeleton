@@ -6,7 +6,7 @@ $_ENV['_start'] = microtime(true);
 // load settings
 $config = dirname(__FILE__) . '/../config.php';
 if (!file_exists($config)) {
-	trigger_error('cannot find config file at "' . $config . '"', E_USER_ERROR);
+    trigger_error('cannot find config file at "' . $config . '"', E_USER_ERROR);
 }
 $_ENV['_config'] = require($config);
 
@@ -28,23 +28,22 @@ else {
 // include global functions
 $globals = dirname(__FILE__) . '/../' . $_ENV['_config']['setting']['app_version'] . '/globals.php';
 if (!file_exists($globals)) {
-	trigger_error('cannot find globals file at "' . $globals . '"', E_USER_ERROR);
+    trigger_error('cannot find globals file at "' . $globals . '"', E_USER_ERROR);
 }
 require_once($globals);
 
 // define path to congig
 $config = dirname(__FILE__) . '/../' . $_ENV['_config']['setting']['app_version'] . '/config/web.php';
 if (!file_exists($config)) {
-	trigger_error('cannot find config file at "' . $config . '"', E_USER_ERROR);
+    trigger_error('cannot find config file at "' . $config . '"', E_USER_ERROR);
 }
 
 // include Yii
 $yii = dirname(__FILE__) . '/../vendor/yiisoft/yii/framework/yii.php';
 if (!file_exists($yii)) {
-	trigger_error('cannot find framework file at "' . $yii . '"', E_USER_ERROR);
+    trigger_error('cannot find framework file at "' . $yii . '"', E_USER_ERROR);
 }
+require_once($yii);
 
 // run the Yii app (Yii-Haw!)
-require_once($yii);
-$webApp = Yii::createWebApplication($config);
-$webApp->run();
+Yii::createWebApplication($config)->run();

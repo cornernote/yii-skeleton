@@ -19,14 +19,11 @@ class GlobalInit extends CApplicationComponent
         parent::init();
 
         // set default php settings
-        date_default_timezone_set(Setting::item('timezone'));
-        $timeLimit = isCli() ? 5 : param('time_limit');
+        date_default_timezone_set(YdSetting::item('timezone'));
+        $timeLimit = isCli() ? 0 : param('time_limit');
         set_time_limit($timeLimit);
         ini_set('max_execution_time', $timeLimit);
-        ini_set('memory_limit', Setting::item('memory_limit'));
-        ini_set('xdebug.max_nesting_level', 200);
+        ini_set('memory_limit', YdSetting::item('memory_limit'));
 
-        // start the audit
-        YdAudit::findCurrent();
     }
 }

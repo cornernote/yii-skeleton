@@ -13,23 +13,24 @@ $config = array(
     'id' => $_ENV['_config']['setting']['id'],
     'name' => $_ENV['_config']['setting']['name'],
     'language' => $_ENV['_config']['setting']['language'],
-	'charset' => $_ENV['_config']['setting']['charset'],
+    'charset' => $_ENV['_config']['setting']['charset'],
 
     // paths
     'basePath' => dirname(dirname(__FILE__)),
     'runtimePath' => dirname(dirname(dirname(__FILE__))) . DS . 'runtime',
-	'aliases' => array(
-		'vendor' => dirname(dirname(dirname(__FILE__))) . DS . 'vendor',
-		'dressing' => dirname(dirname(dirname(__FILE__))) . DS . 'vendor' . DS . 'mrphp' . DS . 'yii-dressing' . DS . 'src',
-		'booster' => dirname(dirname(dirname(__FILE__))) . DS . 'vendor' . DS . 'clevertech' . DS . 'yii-booster' . DS . 'src',
-	),
-		
+    'aliases' => array(
+        'core' => $_ENV['_config']['path'],
+        'vendor' => dirname(dirname(dirname(__FILE__))) . DS . 'vendor',
+        'dressing' => dirname(dirname(dirname(__FILE__))) . DS . 'vendor' . DS . 'mrphp' . DS . 'yii-dressing' . DS . 'src',
+        'bootstrap' => dirname(dirname(dirname(__FILE__))) . DS . 'vendor' . DS . 'clevertech' . DS . 'yii-booster' . DS . 'src',
+    ),
+
     // preload classes
     'preload' => array(
-		'fatalErrorCatch',
         'log',
-		'globalInit',
-		'yiiDressing',
+        'dressing',
+        'fatalErrorCatch',
+        'globalInit',
     ),
 
     // import paths
@@ -53,9 +54,15 @@ $config = array(
 
     // components
     'components' => array(
-		'yiiDressing' => array(
+        'globalInit' => array(
+            'class' => 'GlobalInit',
+        ),
+        'dressing' => array(
             'class' => 'dressing.YiiDressing',
-		),
+            'tableMap' => array(
+                'YdSetting' => $_ENV['_config']['db']['setting'],
+            ),
+        ),
         'errorHandler' => array(
             'class' => 'dressing.components.YdErrorHandler',
             'errorAction' => 'site/error',
@@ -63,13 +70,16 @@ $config = array(
         'fatalErrorCatch' => array(
             'class' => 'dressing.components.YdFatalErrorCatch',
         ),
-        'bootstrap' => array(
-            'class' => 'booster.components.Bootstrap',
-        ),
         'user' => array(
-            'class' => 'application.components.WebUser',
+            'class' => 'dressing.components.YdWebUser',
             'allowAutoLogin' => true,
             'loginUrl' => array('/account/login'),
+        ),
+        'returnUrl' => array(
+            'class' => 'dressing.components.YdReturnUrl',
+        ),
+        'bootstrap' => array(
+            'class' => 'bootstrap.components.Bootstrap',
         ),
         'urlManager' => array(
             'urlFormat' => isset($_GET['r']) ? 'get' : 'path', // allow filters in audit/index work
@@ -87,6 +97,9 @@ $config = array(
         ),
         'cacheFile' => array(
             'class' => 'CFileCache',
+        ),
+        'cacheDb' => array(
+            'class' => 'CDbCache',
         ),
         'cache' => array(
             'class' => 'CMemCache',
@@ -125,6 +138,7 @@ $config = array(
         'recaptcha' => false,
         'recaptchaPrivate' => '6LeBItQSAAAAALA4_G05e_-fG5yH_-xqQIN8AfTD',
         'recaptchaPublic' => '6LeBItQSAAAAAG_umhiD0vyxXbDFbVMPA0kxZUF6',
+        'hashKey' => 'abc123',
     ),
 
 );
