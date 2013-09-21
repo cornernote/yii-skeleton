@@ -40,6 +40,16 @@ function app()
 }
 
 /**
+ * Shortcut to Yii::app()->db
+ *
+ * @return CDbConnection
+ */
+function db()
+{
+    return Yii::app()->getDb();
+}
+
+/**
  * Shortcut to Yii::app()->clientScript
  *
  * @return YdClientScript
