@@ -1,13 +1,6 @@
 <?php
 /**
- * In configuration file main.php add this lines of code:
- * 'preload'=>array('globalInit',...),
- *  ...
- * 'components'=>array(
- *   ...
- *   'globalInit'=>array(
- *     'class'=>'GlobalInit',
- *   ),
+ *
  */
 class GlobalInit extends CApplicationComponent
 {

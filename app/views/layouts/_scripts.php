@@ -6,18 +6,11 @@
 // application stylesheet
 cs()->registerCSSFile(au() . '/css/style.css');
 
-// font awesome
-//$this->widget('widgets.FontAwesome');
-
 // load here so modals don't have to load it
 cs()->registerCoreScript('yiiactiveform');
 
 // modal for popups
 $this->widget('dressing.widgets.YdModal');
-
-// dropdown JS doesn't work on iPad
-// https://github.com/twitter/bootstrap/issues/2975#issuecomment-6659992
-cs()->registerScript('bootstrap-dropdown-fix', "$('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropagation(); });", CClientScript::POS_END);
 
 // qtip for tooltips
 $this->widget('dressing.widgets.YdQTip');

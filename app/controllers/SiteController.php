@@ -2,9 +2,6 @@
 
 /**
  * SiteController
- *
- * @package app.controller
- * @author Brett O'Donnell <brett@mrphp.com.au>
  */
 class SiteController extends YdWebController
 {
