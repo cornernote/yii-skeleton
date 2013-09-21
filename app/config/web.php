@@ -10,7 +10,6 @@
 $config = require(dirname(__FILE__) . '/main.php');
 
 // web only preloads
-$config['preload'][] = 'kint'; // cannot be in main.php  due to issue in commands
 $config['preload'][] = 'bootstrap';
 
 // -- LOG ROUTES --
@@ -52,7 +51,7 @@ if ($scriptName == '/') {
     $scriptName = '';
 }
 $config['components']['assetManager'] = array(
-    'class' => 'AssetManager',
+    'class' => 'CAssetManager',
     'basePath' => dirname($_SERVER['SCRIPT_FILENAME']) . '/assets',
     'baseUrl' => $scriptName . '/assets',
 );

@@ -17,11 +17,19 @@ $config = array(
 
     // paths
     'basePath' => dirname(dirname(__FILE__)),
-    'runtimePath' => dirname(dirname(dirname(__FILE__))) . '/runtime',
-
+    'runtimePath' => dirname(dirname(dirname(__FILE__))) . DS . 'runtime',
+	'aliases' => array(
+		'vendor' => dirname(dirname(dirname(__FILE__))) . DS . 'vendor',
+		'dressing' => dirname(dirname(dirname(__FILE__))) . DS . 'vendor' . DS . 'mrphp' . DS . 'yii-dressing' . DS . 'src',
+		'booster' => dirname(dirname(dirname(__FILE__))) . DS . 'vendor' . DS . 'clevertech' . DS . 'yii-booster' . DS . 'src',
+	),
+		
     // preload classes
     'preload' => array(
+		'fatalErrorCatch',
         'log',
+		'globalInit',
+		'yiiDressing',
     ),
 
     // import paths
@@ -45,6 +53,19 @@ $config = array(
 
     // components
     'components' => array(
+		'yiiDressing' => array(
+            'class' => 'dressing.YiiDressing',
+		),
+        'errorHandler' => array(
+            'class' => 'dressing.components.YdErrorHandler',
+            'errorAction' => 'site/error',
+        ),
+        'fatalErrorCatch' => array(
+            'class' => 'dressing.components.YdFatalErrorCatch',
+        ),
+        'bootstrap' => array(
+            'class' => 'booster.components.Bootstrap',
+        ),
         'user' => array(
             'class' => 'application.components.WebUser',
             'allowAutoLogin' => true,
@@ -63,13 +84,6 @@ $config = array(
             'schemaCachingDuration' => 3600,
             'enableProfiling' => $_ENV['_config']['setting']['debug_db'],
             'enableParamLogging' => $_ENV['_config']['setting']['debug_db'],
-        ),
-        'errorHandler' => array(
-            'class' => 'YdErrorHandler',
-            'errorAction' => 'site/error',
-        ),
-        'fatalErrorCatch' => array(
-            'class' => 'YdFatalErrorCatch',
         ),
         'cacheFile' => array(
             'class' => 'CFileCache',
@@ -93,9 +107,6 @@ $config = array(
         ),
         'swiftMailer' => array(
             'class' => 'application.extensions.swiftMailer.SwiftMailer',
-        ),
-        'bootstrap' => array(
-            'class' => 'ext.bootstrap.components.Bootstrap',
         ),
     ),
 
