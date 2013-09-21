@@ -21,14 +21,14 @@ $config['preload'][] = 'bootstrap';
 // CProfileLogRoute: displays profiling messages at the end of the current Web page.
 
 $config['components']['log']['routes'] = array();
-if ($_ENV['_core']['setting']['debug']) {
+if ($_ENV['_config']['setting']['debug']) {
 
     $config['components']['log']['routes'][] = array(
         'class' => 'CWebLogRoute',
-        'levels' => $_ENV['_core']['setting']['debug_levels'],
+        'levels' => $_ENV['_config']['setting']['debug_levels'],
         //'levels' => 'trace, info, error, warning, profile',
     );
-    if ($_ENV['_core']['setting']['debug_db']) {
+    if ($_ENV['_config']['setting']['debug_db']) {
         $config['components']['log']['routes'][] = array(
             'class' => 'ProfileLogRoute',
             'levels' => 'profile',
@@ -41,7 +41,7 @@ else {
     // no debug, file log route
     $config['components']['log']['routes'][] = array(
         'class' => 'CFileLogRoute',
-        'levels' => $_ENV['_core']['setting']['debug_levels'],
+        'levels' => $_ENV['_config']['setting']['debug_levels'],
     );
 
 }
@@ -58,8 +58,8 @@ $config['components']['assetManager'] = array(
 );
 
 // themes
-if (!empty($_ENV['_core']['setting']['theme'])) {
-    $config['theme'] = $_ENV['_core']['setting']['theme'];
+if (!empty($_ENV['_config']['setting']['theme'])) {
+    $config['theme'] = $_ENV['_config']['setting']['theme'];
     $config['components']['themeManager'] = array(
         'basePath' => dirname(dirname(__FILE__)) . '/themes',
     );

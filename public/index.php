@@ -38,13 +38,8 @@ if (!file_exists($config)) {
 	trigger_error('cannot find config file at "' . $config . '"', E_USER_ERROR);
 }
 
-// include Yii or YiiLite
-if ($_ENV['_config']['setting']['yii_lite']) {
-    $yii = dirname(__FILE__) . '/../vendors/yii/' . $_ENV['_config']['setting']['yii_version'] . '/framework/yiilite.php';
-}
-else {
-    $yii = dirname(__FILE__) . '/../vendors/yii/' . $_ENV['_config']['setting']['yii_version'] . '/framework/yii.php';
-}
+// include Yii
+$yii = dirname(__FILE__) . '/../vendor/yiisoft/yii/framework/yii.php';
 if (!file_exists($yii)) {
 	trigger_error('cannot find framework file at "' . $yii . '"', E_USER_ERROR);
 }

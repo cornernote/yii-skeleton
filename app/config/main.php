@@ -10,14 +10,14 @@
 $config = array(
 
     // yii settings
-    'id' => $_ENV['_core']['setting']['id'],
-    'name' => $_ENV['_core']['setting']['name'],
-    'language' => $_ENV['_core']['setting']['language'],
-	'charset' => $_ENV['_core']['setting']['charset'],
+    'id' => $_ENV['_config']['setting']['id'],
+    'name' => $_ENV['_config']['setting']['name'],
+    'language' => $_ENV['_config']['setting']['language'],
+	'charset' => $_ENV['_config']['setting']['charset'],
 
     // paths
     'basePath' => dirname(dirname(__FILE__)),
-    'runtimePath' => dirname(dirname(dirname(dirname(__FILE__)))) . '/runtime',
+    'runtimePath' => dirname(dirname(dirname(__FILE__))) . '/runtime',
 
     // preload classes
     'preload' => array(
@@ -39,9 +39,7 @@ $config = array(
             'generatorPaths' => array(
                 'application.modules.gii.generators', // a path alias
             ),
-            // 'ipFilters'=>array(...a list of IPs...),
-            // 'newFileMode'=>0666,
-            // 'newDirMode'=>0777,
+            'ipFilters' => array('127.0.0.1'),
         ),
     ),
 
@@ -57,28 +55,28 @@ $config = array(
             'showScriptName' => false,
         ),
         'db' => array(
-            'connectionString' => "mysql:host={$_ENV['_core']['db']['host']};dbname={$_ENV['_core']['db']['name']}",
+            'connectionString' => "mysql:host={$_ENV['_config']['db']['host']};dbname={$_ENV['_config']['db']['name']}",
             'emulatePrepare' => true,
-            'username' => $_ENV['_core']['db']['user'],
-            'password' => $_ENV['_core']['db']['pass'],
+            'username' => $_ENV['_config']['db']['user'],
+            'password' => $_ENV['_config']['db']['pass'],
             'charset' => 'utf8',
             'schemaCachingDuration' => 3600,
-            'enableProfiling' => $_ENV['_core']['setting']['debug_db'],
-            'enableParamLogging' => $_ENV['_core']['setting']['debug_db'],
+            'enableProfiling' => $_ENV['_config']['setting']['debug_db'],
+            'enableParamLogging' => $_ENV['_config']['setting']['debug_db'],
         ),
         'errorHandler' => array(
-            'class' => 'ErrorHandler',
+            'class' => 'YdErrorHandler',
             'errorAction' => 'site/error',
         ),
         'fatalErrorCatch' => array(
-            'class' => 'FatalErrorCatch',
+            'class' => 'YdFatalErrorCatch',
         ),
         'cacheFile' => array(
             'class' => 'CFileCache',
         ),
         'cache' => array(
             'class' => 'CMemCache',
-            'keyPrefix' => 'keyvault.',
+            'keyPrefix' => $_ENV['_config']['setting']['id'] . '.',
             'servers' => array(
                 array(
                     'host' => '127.0.0.1',
@@ -91,7 +89,7 @@ $config = array(
             'class' => 'CLogRouter',
         ),
         'clientScript' => array(
-            'class' => 'ClientScript',
+            'class' => 'YdClientScript',
         ),
         'swiftMailer' => array(
             'class' => 'application.extensions.swiftMailer.SwiftMailer',
