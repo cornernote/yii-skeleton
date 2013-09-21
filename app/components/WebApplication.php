@@ -1,6 +1,9 @@
 <?php
 
 /**
+ * NOTE: This file is not loaded.
+ * It exists so storm links application components correctly.
+ *
  * @property YiiDressing $dressing
  * @property YdClientScript $clientScript
  * @property YdReturnUrl $returnUrl
