@@ -8,7 +8,7 @@
 		"swiftmailer/swiftmailer": "v5.0.2",
 		"mrphp/yii-dressing": "dev-master",
 		"clevertech/yii-booster": "dev-master",
-        "yiisoft/yii": "1.1.14-rc",
+        "yiisoft/yii": "1.1.14",
         "php": ">=5.3.0"
     }
 }
