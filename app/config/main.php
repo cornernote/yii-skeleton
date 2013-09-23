@@ -43,7 +43,7 @@ $config = array(
             'class' => 'system.gii.GiiModule',
             'password' => '123456',
             'generatorPaths' => array(
-                'application.modules.gii.generators', // a path alias
+                'dressing.gii.generators',
             ),
             'ipFilters' => array('127.0.0.1'),
         ),
