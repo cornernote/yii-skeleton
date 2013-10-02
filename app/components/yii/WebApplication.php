@@ -7,6 +7,7 @@
  * @property YiiDressing $dressing
  * @property YdClientScript $clientScript
  * @property YdReturnUrl $returnUrl
+ * @property YdWebUser $user
  * @property CFormatter $format
  * @property string $theme
  * @property array $onEndRequest
