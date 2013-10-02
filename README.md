@@ -1,4 +1,4 @@
-# yii-skeleton
+# Yii Skeleton
 
 MrPHP's Own Yii Skeleton, used for creating new Yii applications.
 
