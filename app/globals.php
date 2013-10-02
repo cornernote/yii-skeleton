@@ -171,15 +171,14 @@ function i($image, $alt = '', $htmlOptions = array())
  * Translate
  *
  * @param $message
- * @param string $category
  * @param array $params
  * @param null $source
  * @param null $language
  * @return string
  */
-function t($message, $category = 'app', $params = array(), $source = null, $language = null)
+function t($message, $params = array(), $source = null, $language = null)
 {
-    return Yii::t($category, $message, $params, $source, $language);
+    return Yii::t('app', $message, $params, $source, $language);
 }
 
 /**
