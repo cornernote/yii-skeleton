@@ -1,6 +1,6 @@
 # Yii Skeleton
 
-MrPHP's Own Yii Skeleton, used for creating new Yii applications.
+MrPHP.com.au's own Yii Skeleton, used for creating new Yii applications.
 
 ## Installation
 
