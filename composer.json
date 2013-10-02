@@ -1,6 +1,6 @@
 {
     "name": "mrphp/yii-skeleton",
-    "description": "Skeleton for a Yii framework app",
+    "description": "MrPHP's Own Yii Skeleton, used for creating new Yii applications.",
     "require": {
 		"mrphp/yii-dressing": "dev-master",
 		"clevertech/yii-booster": "dev-master",
