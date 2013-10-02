@@ -1,0 +1,1 @@
+Classes in this folder are not used by the application, however are useful for overwriting PHPStorm class helpers.

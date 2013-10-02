@@ -53,6 +53,9 @@ $config = array(
     'components' => array(
         'globalInit' => array(
             'class' => 'GlobalInit',
+            'timezone' => $_ENV['_config']['setting']['timezone'],
+            'timeLimit' => $_ENV['_config']['setting']['time_limit'],
+            'memoryLimit' => $_ENV['_config']['setting']['memory_limit'],
         ),
         'dressing' => array(
             'class' => 'dressing.YiiDressing',
