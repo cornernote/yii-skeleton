@@ -1,23 +1,25 @@
 # yii-skeleton
 
-## Composer
+MrPHP's Own Yii Skeleton, used for creating new Yii applications.
 
-To install composer run
+## Installation
+
+install composer
 ```
 curl -sS https://getcomposer.org/installer | php
 ```
 
-If encounter extensions issues in PHP run 
+if you encounter extensions issues in PHP then try running php with no php.ini
 ```
 curl -sS https://getcomposer.org/installer | php -n
 ```
 
-to install packages, edit `composer.json` then run
+install packages, edit `composer.json` then
 ```
 php composer install
 ```
 
-to update packages to the latest versions, edit `composer.json` then run
+update packages to latest versions, edit `composer.json` then
 ```
 php composer update
 ```
