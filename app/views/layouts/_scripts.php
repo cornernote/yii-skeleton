@@ -10,7 +10,10 @@
  */
 
 // application stylesheet
-cs()->registerCSSFile(au() . '/css/style.css');
+cs()->registerCSSFile(au() . '/css/app.css');
+
+// application stylesheet
+cs()->registerCSSFile(au() . '/js/app.js');
 
 // load here so modals don't have to load it
 cs()->registerCoreScript('yiiactiveform');
