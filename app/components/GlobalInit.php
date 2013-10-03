@@ -14,7 +14,7 @@ class GlobalInit extends CApplicationComponent
     /**
      * @var
      */
-    public $timeZone;
+    public $timezone;
 
     /**
      * @var
@@ -34,7 +34,7 @@ class GlobalInit extends CApplicationComponent
         parent::init();
 
         // set default php settings
-        date_default_timezone_set($this->timeZone);
+        date_default_timezone_set($this->timezone);
         set_time_limit($this->timeLimit);
         ini_set('max_execution_time', $this->timeLimit);
         ini_set('memory_limit', $this->memoryLimit);
