@@ -38,12 +38,12 @@ curl -sS https://getcomposer.org/installer | php -n
 
 install packages, edit `composer.json` then
 ```
-php composer install
+php composer.phar install
 ```
 
 update packages to latest versions, edit `composer.json` then
 ```
-php composer update
+php composer.phar update
 ```
 
 useful links:
