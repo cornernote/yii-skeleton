@@ -36,7 +36,7 @@ function debug($var, $name = '')
     else
         print_r($var);
     print '</pre></div></div>';
-}
+}u
 
 /**
  * Shortcut to Yii::app()
@@ -89,6 +89,10 @@ function user()
  */
 function url($route, $params = array(), $ampersand = '&')
 {
+    if (is_array($route)) {
+        $params = CMap::mergeArray($route, $params);
+        $route = array_shift($params);
+    }
     return Yii::app()->createUrl($route, $params, $ampersand);
 }
 
@@ -104,6 +108,13 @@ function url($route, $params = array(), $ampersand = '&')
  */
 function absoluteUrl($route, $params = array(), $schema = '', $ampersand = '&')
 {
+    if (!isset($_SERVER['SERVER_NAME'])) {
+        $_SERVER['SERVER_NAME'] = YdSetting::item('domain');
+    }
+    if (is_array($route)) {
+        $params = CMap::mergeArray($route, $params);
+        $route = array_shift($params);
+    }
     return Yii::app()->createAbsoluteUrl($route, $params, $schema, $ampersand);
 }
 
