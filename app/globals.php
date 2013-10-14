@@ -301,7 +301,7 @@ function format()
 }
 
 /**
- * Gets a submitted field
+ * Submitted Field
  * Shortcut to YdHelper::getSubmittedField
  *
  * @param $field
@@ -314,15 +314,29 @@ function sf($field, $model = null)
 }
 
 /**
- * Returns the a key in an array if it is set, otherwise returns false.
+ * Safe Index
+ * Returns the a key in an array if it is set, otherwise returns null.
  *
  * @param $array
  * @param $index
- * @return bool
+ * @return mixed
  */
 function si($array, $index)
 {
-    return isset($array[$index]) ? $array[$index] : false;
+    return isset($array[$index]) ? $array[$index] : null;
+}
+
+/**
+ * Value or Default
+ * Returns the a value if it is set, otherwise returns the default.
+ *
+ * @param $value
+ * @param $default
+ * @return mixed
+ */
+function vd(&$value, $default = null)
+{
+    return isset($value) ? $value : $default;
 }
 
 /**
