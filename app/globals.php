@@ -108,9 +108,6 @@ function url($route, $params = array(), $ampersand = '&')
  */
 function absoluteUrl($route, $params = array(), $schema = '', $ampersand = '&')
 {
-    if (!isset($_SERVER['SERVER_NAME'])) {
-        $_SERVER['SERVER_NAME'] = YdSetting::item('domain');
-    }
     if (is_array($route)) {
         $params = CMap::mergeArray($route, $params);
         $route = array_shift($params);
@@ -218,7 +215,7 @@ function bu()
  */
 function bp()
 {
-    return Yii::app()->basePath;
+    return Yii::app()->getBasePath();
 }
 
 /**
@@ -258,7 +255,7 @@ function vp()
  */
 function hp()
 {
-    return dirname(Yii::app()->request->scriptFile);
+    return dirname(Setting::item('script_path'));
 }
 
 /**
