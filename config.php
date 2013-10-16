@@ -36,6 +36,11 @@ $_config = array(
         'time_limit' => 60,
         'memory_limit' => '128M',
         'audit' => false,
+        
+        // leave blank and they will be populated in settings page
+        'server_name' => '',
+        'script_path' => '',
+        'script_url' => '',
     ),
 );
 
