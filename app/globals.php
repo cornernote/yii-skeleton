@@ -36,7 +36,7 @@ function debug($var, $name = '')
     else
         print_r($var);
     print '</pre></div></div>';
-}u
+}
 
 /**
  * Shortcut to Yii::app()
