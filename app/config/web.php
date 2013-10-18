@@ -60,19 +60,19 @@ $config['components']['themeManager'] = array(
 
 // controller map
 $config['controllerMap'] = array(
-    'account' => 'dressing.controllers.AccountController',
-    'attachment' => 'dressing.controllers.AttachmentController',
-    'audit' => 'dressing.controllers.AuditController',
-    'auditTrail' => 'dressing.controllers.AuditTrailController',
-    'contactUs' => 'dressing.controllers.ContactUsController',
-    'emailSpool' => 'dressing.controllers.EmailSpoolController',
-    'emailTemplate' => 'dressing.controllers.EmailTemplateController',
-    'error' => 'dressing.controllers.ErrorController',
-    'lookup' => 'dressing.controllers.LookupController',
-    'menu' => 'dressing.controllers.MenuController',
-    'role' => 'dressing.controllers.RoleController',
-    'setting' => 'dressing.controllers.SettingController',
-    'user' => 'dressing.controllers.UserController',
+    'account' => 'dressing.controllers.YdAccountController',
+    'attachment' => 'dressing.controllers.YdAttachmentController',
+    'audit' => 'dressing.controllers.YdAuditController',
+    'auditTrail' => 'dressing.controllers.YdAuditTrailController',
+    'contactUs' => 'dressing.controllers.YdContactUsController',
+    'emailSpool' => 'dressing.controllers.YdEmailSpoolController',
+    'emailTemplate' => 'dressing.controllers.YdEmailTemplateController',
+    'error' => 'dressing.controllers.YdErrorController',
+    'lookup' => 'dressing.controllers.YdLookupController',
+    'menu' => 'dressing.controllers.YdMenuController',
+    'role' => 'dressing.controllers.YdRoleController',
+    'setting' => 'dressing.controllers.YdSettingController',
+    'user' => 'dressing.controllers.YdUserController',
 );
 
 // local config overrides
