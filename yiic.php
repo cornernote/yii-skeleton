@@ -17,7 +17,7 @@ if (substr(php_sapi_name(), 0, 3) != 'cli') {
 $_ENV['_start'] = microtime(true);
 
 // load core settings
-$core = dirname(__FILE__) . '/../config.php';
+$core = dirname(__FILE__) . '/config.php';
 if (!file_exists($core)) {
     trigger_error('cannot find core file at "' . $core . '"', E_USER_ERROR);
 }
@@ -39,20 +39,20 @@ else {
 }
 
 // include global functions
-$globals = dirname(__FILE__) . '/../' . $_ENV['_config']['setting']['app_version'] . '/globals.php';
+$globals = dirname(__FILE__) . '/' . $_ENV['_config']['setting']['app_version'] . '/globals.php';
 if (!file_exists($globals)) {
     trigger_error('cannot find globals file at "' . $globals . '"', E_USER_ERROR);
 }
 require_once($globals);
 
 // define path to congig
-$config = dirname(__FILE__) . '/../' . $_ENV['_config']['setting']['app_version'] . '/config/cli.php';
+$config = dirname(__FILE__) . '/' . $_ENV['_config']['setting']['app_version'] . '/config/cli.php';
 if (!file_exists($config)) {
     trigger_error('cannot find config file at "' . $config . '"', E_USER_ERROR);
 }
 
 // include Yiic
-$yiic = dirname(__FILE__) . '/../vendor/yiisoft/yii/framework/yiic.php';
+$yiic = dirname(__FILE__) . '/vendor/yiisoft/yii/framework/yiic.php';
 if (!file_exists($yiic)) {
     trigger_error('cannot find framework file at "' . $yiic . '"', E_USER_ERROR);
 }
