@@ -58,7 +58,7 @@ $config = array(
     // components
     'components' => array(
         'globalInit' => array(
-            'class' => 'GlobalInit',
+            'class' => 'dressing.components.YdGlobalInit',
             'timezone' => $_ENV['_config']['setting']['timezone'],
             'timeLimit' => $_ENV['_config']['setting']['time_limit'],
             'memoryLimit' => $_ENV['_config']['setting']['memory_limit'],
