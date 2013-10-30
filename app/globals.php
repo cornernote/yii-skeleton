@@ -239,7 +239,7 @@ function ap()
 }
 
 /**
- * Vendors Path
+ * Vendor Path
  *
  * @return string
  */
