@@ -249,13 +249,13 @@ function vp()
 }
 
 /**
- * Htroot Path
+ * Public Path
  *
  * @return string
  */
-function hp()
+function pp()
 {
-    return dirname(Setting::item('script_path'));
+    return Yii::getPathOfAlias('public');
 }
 
 /**
