@@ -57,6 +57,13 @@ $config = array(
 
     // components
     'components' => array(
+        'widgetFactory' => array(
+            'widgets' => array(
+                'TbMenu' => array(
+                    'activateParents' => true,
+                ),
+            ),
+        ),
         'globalInit' => array(
             'class' => 'dressing.components.YdGlobalInit',
             'timezone' => $_ENV['_config']['setting']['timezone'],
