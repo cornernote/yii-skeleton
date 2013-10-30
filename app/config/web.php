@@ -48,6 +48,7 @@ $config['components']['assetManager'] = array(
     'class' => 'CAssetManager',
     'basePath' => dirname($_SERVER['SCRIPT_FILENAME']) . DS . 'assets',
     'baseUrl' => $scriptName . '/assets',
+    'linkAssets' => true,
 );
 
 // themes
@@ -69,7 +70,7 @@ $config['controllerMap'] = array(
     'emailTemplate' => 'dressing.controllers.YdEmailTemplateController',
     'error' => 'dressing.controllers.YdErrorController',
     'lookup' => 'dressing.controllers.YdLookupController',
-    'menu' => 'dressing.controllers.YdMenuController',
+    'siteMenu' => 'dressing.controllers.YdSiteMenuController',
     'role' => 'dressing.controllers.YdRoleController',
     'setting' => 'dressing.controllers.YdSettingController',
     'user' => 'dressing.controllers.YdUserController',
