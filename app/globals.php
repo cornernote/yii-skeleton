@@ -59,6 +59,36 @@ function db()
 }
 
 /**
+ * Shortcut to Yii::app()->cache
+ *
+ * @param string $cache mem|file|db
+ * @return CCache
+ */
+function cache($cache = null)
+{
+    if ($cache == 'file')
+        $cache = 'cacheFile';
+    elseif ($cache == 'db')
+        $cache = 'cacheDb';
+    else
+        $cache = 'cache';
+    return Yii::app()->$cache;
+}
+
+/**
+ * Gets the named application parameter.
+ * Shortcut to Yii::app()->params[$name].
+ *
+ * @param $name
+ * @return bool
+ */
+function param($name)
+{
+    return vd(Yii::app()->params[$name]);
+}
+
+
+/**
  * Shortcut to Yii::app()->clientScript
  *
  * @return YdClientScript
@@ -76,6 +106,24 @@ function cs()
 function user()
 {
     return Yii::app()->getUser();
+}
+
+/**
+ * HTTP Request
+ *
+ * @return CHttpRequest
+ */
+function request()
+{
+    return Yii::app()->getRequest();
+}
+
+/**
+ * @return YdReturnUrl
+ */
+function returnUrl()
+{
+    return Yii::app()->returnUrl;
 }
 
 /**
@@ -116,26 +164,6 @@ function absoluteUrl($route, $params = array(), $schema = '', $ampersand = '&')
 }
 
 /**
- * HTTP Request
- *
- * @return CHttpRequest
- */
-function request()
-{
-    return Yii::app()->getRequest();
-}
-
-/**
- * Request Uri
- *
- * @return string
- */
-function ru()
-{
-    return Yii::app()->getRequest()->getRequestUri();
-}
-
-/**
  * Parse Url
  *
  * @param $url
@@ -144,17 +172,6 @@ function ru()
 function parseUrl($url)
 {
     return Yii::app()->getUrlManager()->parseUrl($url);
-}
-
-/**
- * HTML Encode
- *
- * @param $text
- * @return string
- */
-function h($text)
-{
-    return htmlspecialchars($text, ENT_QUOTES, Yii::app()->charset);
 }
 
 /**
@@ -199,13 +216,35 @@ function t($message, $params = array(), $source = null, $language = null)
 }
 
 /**
- * Base Url
+ * HTML Encode
+ *
+ * @param $text
+ * @return string
+ */
+function h($text)
+{
+    return htmlspecialchars($text, ENT_QUOTES, Yii::app()->charset);
+}
+
+/**
+ * Request Uri
  *
  * @return string
  */
-function bu()
+function ru()
 {
-    return Yii::app()->getRequest()->getBaseUrl();
+    return Yii::app()->getRequest()->getRequestUri();
+}
+
+/**
+ * Base Url
+ *
+ * @param bool $absolute
+ * @return string
+ */
+function bu($absolute = false)
+{
+    return Yii::app()->getBaseUrl($absolute);
 }
 
 /**
@@ -249,45 +288,6 @@ function pp()
 }
 
 /**
- * Gets the named application parameter.
- * Shortcut to Yii::app()->params[$name].
- *
- * @param $name
- * @return bool
- */
-function param($name)
-{
-    return isset(Yii::app()->params[$name]) ? Yii::app()->params[$name] : false;
-}
-
-/**
- * Shortcut to Yii::app()->cache
- *
- * @param string $cache mem|file
- * @return CCache
- */
-function cache($cache = null)
-{
-    if ($cache == 'file')
-        $cache = 'cacheFile';
-    elseif ($cache == 'db')
-        $cache = 'cacheDb';
-    else
-        $cache = 'cache';
-    return Yii::app()->$cache;
-}
-
-/**
- * Shortcut to Yii::app()->format
- *
- * @return CFormatter
- */
-function format()
-{
-    return Yii::app()->format;
-}
-
-/**
  * Submitted Field
  * Shortcut to YdHelper::getSubmittedField
  *
@@ -324,54 +324,4 @@ function si($array, $index)
 function vd(&$value, $default = null)
 {
     return isset($value) ? $value : $default;
-}
-
-/**
- * Is this an AJAX request
- *
- * @return bool
- */
-function isAjax()
-{
-    return Yii::app()->getRequest()->getIsAjaxRequest();
-}
-
-/**
- * Is this a Post request
- *
- * @return bool
- */
-function isPost()
-{
-    return Yii::app()->getRequest()->getIsPostRequest();
-}
-
-/**
- * Is this a CLI request
- *
- * @return bool
- */
-function isCli()
-{
-    return YdHelper::isCli();
-}
-
-/**
- * Is this a Mobile request
- *
- * @return bool
- */
-function isMobile()
-{
-    return YdHelper::isMobileBrowser();
-}
-
-/**
- * Is this a Front Page request
- *
- * @return bool
- */
-function isFront()
-{
-    return YdHelper::isFrontPage();
 }
