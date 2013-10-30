@@ -8,50 +8,27 @@
  * @link https://github.com/cornernote/yii-skeleton
  * @license http://www.gnu.org/copyleft/gpl.html
  */
+
 // start the timer
 $_ENV['_start'] = microtime(true);
 
-// load settings
-$config = dirname(__FILE__) . '/../config.php';
-if (!file_exists($config)) {
-    trigger_error('cannot find config file at "' . $config . '"', E_USER_ERROR);
-}
-$_ENV['_config'] = require($config);
+// define directory separator shortcut
+defined('DS') or define('DS', DIRECTORY_SEPARATOR);
 
-// set debug levels
-if ($_ENV['_config']['setting']['debug']) {
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-    ini_set('log_errors', 1);
-    defined('YII_DEBUG') or define('YII_DEBUG', true);
-    defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL', $_ENV['_config']['setting']['debug']);
-}
-else {
-    error_reporting(E_ALL);
-    ini_set('display_errors', 0);
-    ini_set('log_errors', 0);
-    defined('YII_DEBUG') or define('YII_DEBUG', false);
-}
-
-// include global functions
-$globals = dirname(__FILE__) . '/../' . $_ENV['_config']['setting']['app_version'] . '/globals.php';
-if (!file_exists($globals)) {
-    trigger_error('cannot find globals file at "' . $globals . '"', E_USER_ERROR);
-}
-require_once($globals);
-
-// define path to congig
-$config = dirname(__FILE__) . '/../' . $_ENV['_config']['setting']['app_version'] . '/config/web.php';
-if (!file_exists($config)) {
-    trigger_error('cannot find config file at "' . $config . '"', E_USER_ERROR);
+// ensure cli is not being called
+if (substr(php_sapi_name(), 0, 3) == 'cli') {
+    trigger_error('This script cannot be run from a CLI.', E_USER_ERROR);
 }
 
 // include Yii
-$yii = dirname(__FILE__) . '/../vendor/yiisoft/yii/framework/yii.php';
-if (!file_exists($yii)) {
-    trigger_error('cannot find framework file at "' . $yii . '"', E_USER_ERROR);
-}
-require_once($yii);
+require_once(dirname(dirname(__FILE__)) . DS . 'vendor' . DS . 'yiisoft' . DS . 'yii' . DS . 'framework' . DS . 'yii.php');
+
+// include globals
+require_once(dirname(dirname(__FILE__)) . DS . 'app' . DS . 'globals.php');
+
+// include config
+require_once(dirname(dirname(__FILE__)) . DS . 'vendor' . DS . 'mrphp' . DS . 'yii-dressing' . DS . 'src' . DS . 'components' . DS . 'YdConfig.php');
+$config = YdConfig::instance(array('appPath' => dirname(dirname(__FILE__)) . DS . 'app'))->getWebConfig();
 
 // run the Yii app (Yii-Haw!)
 Yii::createWebApplication($config)->run();
