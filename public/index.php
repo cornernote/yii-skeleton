@@ -4,7 +4,7 @@
  */
  
 // start the timer
-$_ENV['_start'] = microtime(true);
+defined('APP_START') or define('APP_START', microtime(true));
 
 // include globals
 require_once(dirname(dirname(__FILE__)) . '/app/globals.php');
