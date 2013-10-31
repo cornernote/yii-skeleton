@@ -28,7 +28,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 install composer
 ```
-curl -sS https://getcomposer.org/installer | php
+curl http://getcomposer.org/installer | php
 ```
 
 install packages, edit `composer.json` then
