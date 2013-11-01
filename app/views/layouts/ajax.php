@@ -10,10 +10,13 @@
  * @license http://www.gnu.org/copyleft/gpl.html
  */
 
-echo '<div class="modal-header">';
 if ($this->isModal) {
+    echo '<div class="modal-header">';
     echo '<button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>';
+    echo '<h3>' . $this->pageHeading . '</h3>';
+    echo '</div>';
 }
-echo '<h3>' . $this->pageHeading . '</h3>';
-echo '</div>';
+else
+    echo '<h3>' . $this->pageHeading . '</h3>';
+
 echo $content;
