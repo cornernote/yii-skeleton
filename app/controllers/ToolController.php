@@ -55,11 +55,14 @@ class ToolController extends YdWebController
     {
         // cache
         cache()->flush();
+        cache('apc')->flush();
         cache('db')->flush();
         cache('file')->flush();
 
         // assets
-        YdFileHelper::removeDirectory(app()->getAssetManager()->basePath, false);
+        if (!Yii::app()->getAssetManager()->linkAssets) {
+            YdFileHelper::removeDirectory(Yii::app()->getAssetManager()->basePath, false);
+        }
 
         // all done
         user()->addFlash(t('Server cache has been cleared.'), 'success');
