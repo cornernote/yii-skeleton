@@ -19,6 +19,7 @@
  * @property CFileCache $cacheFile
  *
  * @method YdClientScript getClientScript() getClientScript()
+ * @method YdReturnUrl getReturnUrl() getReturnUrl()
  *
  * @author Brett O'Donnell <cornernote@gmail.com>
  * @author Zain Ul abidin <zainengineer@gmail.com>
