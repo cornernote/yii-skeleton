@@ -84,7 +84,7 @@ function cache($cache = null)
  */
 function param($name)
 {
-    return vd(Yii::app()->params[$name]);
+    return isset(Yii::app()->params[$name]) ? Yii::app()->params[$name] : null;
 }
 
 
