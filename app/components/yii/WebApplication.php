@@ -4,15 +4,19 @@
  * NOTE: This file is not loaded.
  * It exists so storm links application components correctly.
  *
+ * @property array $onEndRequest
+ * @property array $onError
+ * @property array $onException
+ * @property string $theme
  * @property YiiDressing $dressing
  * @property YdClientScript $clientScript
  * @property YdReturnUrl $returnUrl
  * @property YdWebUser $user
  * @property CFormatter $format
- * @property string $theme
- * @property array $onEndRequest
- * @property array $onError
- * @property array $onException
+ * @property CMemCache $cache
+ * @property CApcCache $cacheApc
+ * @property CDbCache $cacheDb
+ * @property CFileCache $cacheFile
  *
  * @method YdClientScript getClientScript() getClientScript()
  *
