@@ -15,8 +15,8 @@ $this->beginWidget('dressing.widgets.YdJavaScriptWidget', array('position' => CC
 <script type="text/javascript">
 
     var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', '<?php echo YdSetting::item('google_analytics_id'); ?>']);
-    _gaq.push(['_setDomainName', '<?php echo YdSetting::item('google_analytics_domain'); ?>']);
+    _gaq.push(['_setAccount', '<?php echo YdConfig::setting('google_analytics_id'); ?>']);
+    _gaq.push(['_setDomainName', '<?php echo YdConfig::setting('google_analytics_domain'); ?>']);
     _gaq.push(['_setAllowLinker', true]);
     _gaq.push(['_trackPageview']);
 
