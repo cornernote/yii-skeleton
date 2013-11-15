@@ -13,9 +13,9 @@
         'fixed' => 'top',
         //'fluid' => true,
         'collapse' => true,
-        'items' => YdMenu::topMenu(),
+        'items' => YdSiteMenu::topMenu(),
         'constantItems' => array(
-            YdMenu::userMenu(),
+            YdSiteMenu::userMenu(),
         ),
     ));
     ?>
