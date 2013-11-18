@@ -119,6 +119,16 @@ function request()
 }
 
 /**
+ * Shortcut to Yii::app()->email
+ *
+ * @return YdEmail
+ */
+function email()
+{
+    return Yii::app()->email;
+}
+
+/**
  * @return YdReturnUrl
  */
 function returnUrl()
