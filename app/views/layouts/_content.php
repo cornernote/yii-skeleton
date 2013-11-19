@@ -40,9 +40,8 @@ if ($this->showNavBar) {
             }
             if ($this->breadcrumbs) {
                 $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
-                    'id' => 'breadcrumb',
                     'links' => $this->breadcrumbs,
-                    'separator' => '',
+                    'separator' => '<i class="icon-chevron-right"></i>',
                 ));
             }
             ?>
