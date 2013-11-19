@@ -12,42 +12,97 @@
 ?>
 
 <?php
-$this->widget('widgets.Navbar', array(
-    'id' => 'navbar',
-    'fixed' => 'top',
-    //'fluid' => true,
-    'collapse' => true,
-    'items' => YdSiteMenu::topMenu(),
-    'constantItems' => array(
-        YdSiteMenu::userMenu(),
-    ),
-));
+if ($this->showNavBar) {
+    $this->widget('dressing.widgets.YdNavbar', array(
+        'id' => 'navbar',
+        'fixed' => 'top',
+        //'fluid' => true,
+        'collapse' => true,
+        'items' => YdSiteMenu::topMenu(),
+        'constantItems' => array(
+            YdSiteMenu::userMenu(),
+        ),
+    ));
+}
 ?>
 
 <div id="holder" class="content">
     <header>
-        <?php if ($this->id == 'site' && $this->action->id == 'index') { ?>
+        <?php if (YdHelper::isFrontPage()) { ?>
             <div id="landing">
                 <div class="container">
-                    <div class="row">
-                        <div class="span6">
-                            <h1>Some Title</h1>
+                    <div class="row-fluid">
+                        <div class="span8">
+                            <h1><?php echo $this->pageIcon ? '<i class="' . $this->pageIcon . '"></i> ' : ''; ?><?php echo $this->pageHeading; ?></h1>
                             <br/>
 
-                            <p>Great description!</p>
+                            <?php echo nl2br(t(YdConfig::setting('mission'))); ?>
                             <br/><br/>
 
-                            <p><?php echo l(t('Get Started Now'), array('/account/register'), array('class' => 'btn btn-primary btn-action', 'data-toggle' => 'modal-remote')); ?></p>
+                            <div class="buttons">
+                                <?php
+                                echo l(t('Get Started Free'), array('/account/signup'), array('class' => 'btn btn-primary btn-action', 'data-toggle' => 'modal-remote'));
+                                echo ' ';
+                                echo l(t('Plans and Pricing'), array('/site/page', 'view' => 'pricing'), array('class' => 'btn btn-action'));
+                                ?>
+                            </div>
                         </div>
-                        <div class="span6">
-                            <iframe width="440" height="300" src="http://www.youtube.com/embed/vFaKs6OXMvk" frameborder="0" allowfullscreen class="pull-right"></iframe>
+                        <div class="span4">
+                            <?php
+                            $img = i(bu() . '/img/landing_video.png', t(YdConfig::setting('landingYoutubeTitle')));
+                            if (YdHelper::isMobileBrowser()) {
+                                echo l($img, 'http://youtu.be/' . YdConfig::setting('landingYoutube'), array(
+                                    'class' => 'thumbnail',
+                                ));
+                            }
+                            else {
+                                echo l($img, '#landingYoutube', array(
+                                    'data-toggle' => 'modal',
+                                    'data-backdrop' => 'static',
+                                    'data-keyboard' => 'false',
+                                    'class' => 'thumbnail',
+                                    'onclick' => 'youtubePlayer("playVideo");',
+                                ));
+                                ?>
+                                <div id="landingYoutube" class="modal hide fade" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                                onclick="youtubePlayer('pauseVideo');">×
+                                        </button>
+                                        <h3 id="myModalLabel"><?php echo t(YdConfig::setting('landingYoutubeTitle')) . '</small>'; ?></h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        <iframe id="youtubeFrame" class="video" width="560" height="345"
+                                                src="http://www.youtube.com/embed/<?php echo YdConfig::setting('landingYoutube'); ?>?enablejsapi=1"
+                                                frameborder="0" class="pull-right" webkitAllowFullScreen
+                                                mozallowfullscreen allowFullScreen></iframe>
+                                    </div>
+                                </div>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
             </div>
-        <?php } ?>
-
-        <?php if ($this->pageHeading) { ?>
+        <?php
+        $this->beginWidget('dressing.widgets.YdJavaScriptWidget', array('position' => CClientScript::POS_HEAD));
+        ?>
+            <script type="text/javascript">
+                function youtubePlayer(command) {
+                    $('iframe[src*="http://www.youtube.com/embed/"]').each(function (i) {
+                        this.contentWindow.postMessage('{"event":"command","func":"' + command + '","args":""}', '*');
+                    });
+                }
+            </script>
+            <?php
+            $this->endWidget();
+            ?>
+        <?php
+        }
+        else if ($this->pageHeading || $this->menu) {
+            ?>
             <div id="header">
                 <div class="container">
                     <div class="row">
@@ -55,22 +110,29 @@ $this->widget('widgets.Navbar', array(
                             <h1><?php echo $this->pageIcon ? '<i class="' . $this->pageIcon . '"></i> ' : ''; ?><?php echo $this->pageHeading; ?></h1>
                         </div>
                     </div>
+                    <?php
+                    if ($this->menu) {
+                        $this->widget('bootstrap.widgets.TbMenu', array(
+                            'id' => 'menu',
+                            'type' => 'tabs',
+                            'items' => $this->menu,
+                        ));
+                    }
+                    ?>
                 </div>
             </div>
-        <?php } ?>
+        <?php
+        }
+        ?>
     </header>
 
     <div id="body" class="container">
         <?php
-        if ($this->menu) {
-            $this->widget('bootstrap.widgets.TbMenu', array(
-                'id' => 'menu',
-                'type' => 'tabs',
-                'items' => $this->menu,
-            ));
-        }
         if ($this->breadcrumbs) {
-            $this->widget('bootstrap.widgets.TbBreadcrumbs', array('links' => $this->breadcrumbs));
+            $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+                'links' => $this->breadcrumbs,
+                'separator' => '<i class="icon-chevron-right"></i>',
+            ));
         }
         echo user()->multiFlash();
         echo $content;
@@ -84,13 +146,13 @@ $this->widget('widgets.Navbar', array(
                     <h3>Quick Links</h3>
                     <?php
                     $this->widget('zii.widgets.CMenu', array(
-                        'items' => Menu::getItemsFromMenu('Main'),
+                        'items' => YdSiteMenu::getItemsFromMenu('Main'),
                         'htmlOptions' => array(
                             'id' => 'menu',
                         ),
                     ));
                     $this->widget('zii.widgets.CMenu', array(
-                        'items' => Menu::getItemsFromMenu('Help'),
+                        'items' => YdSiteMenu::getItemsFromMenu('Help'),
                         'htmlOptions' => array(
                             'id' => 'menu',
                         ),
@@ -133,11 +195,9 @@ $this->widget('widgets.Navbar', array(
                     <div class="span12">
                         <p><?php echo '&copy; ' . date('Y') . ' ' . app()->name; ?>
 
-                            <span <?php echo YII_DEBUG ? '' : 'style="color: #394755;"'; ?>>
-                            <?php $this->renderPartial('/audit/_footer'); ?>
-                        </span>
-                        <span id="totop" class="pull-right"><a href="#">Back to Top
-                                <i class="icon-arrow-up"></i></a></span>
+                            <?php $this->renderPartial('dressing.views.audit._footer'); ?>
+                            <span id="totop" class="pull-right"><a href="#">Back to Top
+                                    <i class="icon-arrow-up"></i></a></span>
                         </p>
                     </div>
                 </div>
