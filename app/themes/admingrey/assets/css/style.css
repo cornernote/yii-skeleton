@@ -130,6 +130,18 @@ h5 {
     border-bottom: 1px solid #f9f9f9;
 }
 
+.nav-tabs .dropdown-toggle .caret {
+    margin-top: 6px;
+    border-top-color: #000;
+    border-bottom-color: #000;
+}
+
+.nav-tabs :hover .dropdown-toggle .caret {
+    margin-top: 6px;
+    border-top-color: #333;
+    border-bottom-color: #333;
+}
+
 /*********************
     Breadcrumbs
 *********************/
