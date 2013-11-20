@@ -21,4 +21,19 @@ if (!YdHelper::tableExists('migration')) {
     echo '</pre>';
 }
 
-
+echo '<div class="row-fluid" id="home-menu">';
+$menus = SiteMenu::getItemsFromMenu('Main');
+foreach ($menus as $menu) {
+    if (empty($menu['items']))
+        continue;
+    echo '<div class="span2">';
+    $id = 'homemenu-heading-' . strtolower($menu['label']);
+    echo '<h1 id="' . $id . '">' . $menu['label'] . '</h1>';
+    $this->widget('dressing.widgets.YdHomeMenu', array(
+        'type' => 'pills', // '', 'tabs', 'pills' (or 'list')
+        'stacked' => true,
+        'items' => $menu['items'],
+    ));
+    echo '</div>';
+}
+echo '</div>';
