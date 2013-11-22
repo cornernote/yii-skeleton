@@ -1,5 +1,5 @@
 <?php
-require_once(YII_DRESSING_PATH . DS . 'YdBase.php');
+require_once(YII_DRESSING_PATH . '/YdBase.php');
 
 /**
  * Class Yii
