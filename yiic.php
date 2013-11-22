@@ -1,6 +1,6 @@
 <?php
 /**
- * Yii CLI
+ * Application CLI Entry Script
  */
 
 /**
