@@ -8,7 +8,7 @@
  * @property array $onError
  * @property array $onException
  * @property string $theme
- * @property YiiDressing $dressing
+ * @property YdDressing $dressing
  * @property YdClientScript $clientScript
  * @property YdReturnUrl $returnUrl
  * @property YdWebUser $user
