@@ -17,6 +17,9 @@
  * @property CApcCache $cacheApc
  * @property CDbCache $cacheDb
  * @property CFileCache $cacheFile
+ * @property CDbConnection $dbCre
+ * @property Email $email
+ * @property MailChimp $mailChimp
  *
  * @method YdClientScript getClientScript() getClientScript()
  * @method YdReturnUrl getReturnUrl() getReturnUrl()
@@ -27,7 +30,7 @@
  * @link https://github.com/cornernote/yii-skeleton
  * @license http://www.gnu.org/copyleft/gpl.html
  */
-class WebApplication extends CWebApplication
+class Application extends CWebApplication
 {
 
 
