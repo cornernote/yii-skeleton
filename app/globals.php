@@ -41,7 +41,7 @@ function debug($var, $name = '')
 /**
  * Shortcut to Yii::app()
  *
- * @return WebApplication
+ * @return Application
  */
 function app()
 {
