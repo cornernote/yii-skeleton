@@ -1,4 +1,9 @@
 <?php
+/**
+ * Application Configuration
+ *
+ * At this point in the runtime all constants have been defined and the environment has been configured.
+ */
 $app = Config::instance()->getConfig('app');
 $db = vd(Config::instance()->getConfig('db'), array(
     'host' => 'localhost',
