@@ -50,8 +50,8 @@ return array(
             'password' => $db['pass'],
             'charset' => 'utf8',
             'schemaCachingDuration' => 3600,
-            'enableProfiling' => (YII_DEBUG && YII_DRESSING_DB_PROFILE),
-            'enableParamLogging' => (YII_DEBUG && YII_DRESSING_DB_PROFILE),
+            'enableProfiling' => (YII_DEBUG && YII_DEBUG_TOOLBAR),
+            'enableParamLogging' => (YII_DEBUG && YII_DEBUG_TOOLBAR),
         ),
         'themeManager' => array(
             'basePath' => APP_PATH . DS . 'themes',
