@@ -17,7 +17,7 @@ return array(
     'id' => vd($app['id'], 'app'),
     'name' => vd($app['name'], 'App'),
     'language' => vd($app['language'], 'en'),
-    'theme' => vd($app['theme']),
+    'theme' => vd($app['theme'], false),
     'params' => vd($app['params'], array()),
 
     // paths
