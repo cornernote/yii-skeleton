@@ -1,5 +1,5 @@
 <?php
-defined('YII_DRESSING_PATH') or define('YII_DRESSING_PATH', dirname(__FILE__) . '/vendor/mrphp/yii-dressing/yii-dressing');
+defined('YII_DRESSING_PATH') or define('YII_DRESSING_PATH', str_replace(array('\\', '/'), DIRECTORY_SEPARATOR, dirname(__FILE__) . '/vendor/mrphp/yii-dressing/yii-dressing'))
 require_once(YII_DRESSING_PATH . '/YdConfig.php');
 
 /**
