@@ -18,7 +18,7 @@ return array(
     'name' => vd($app['name'], 'App'),
     'language' => vd($app['language'], 'en'),
     'theme' => vd($app['theme']),
-    'params' => vd($app['params']),
+    'params' => vd($app['params'], array()),
 
     // paths
     'basePath' => APP_PATH,
