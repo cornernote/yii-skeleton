@@ -10,11 +10,6 @@
  */
 
 /**
- * Shortcut to DIRECTORY_SEPARATOR
- */
-defined('DS') or define('DS', DIRECTORY_SEPARATOR);
-
-/**
  * Debug your variables in the coolest way possible
  *
  * @param $var
@@ -23,7 +18,7 @@ defined('DS') or define('DS', DIRECTORY_SEPARATOR);
 function debug($var, $name = '')
 {
     $bt = debug_backtrace();
-    $file = str_replace(bp(), '', $bt[0]['file']);
+    $file = str_ireplace(dirname(dirname(__FILE__)), '', $bt[0]['file']);
     print '<div style="background: #FFFBD6">';
     $nameLine = $name ? '<b> <span style="font-size:18px;">' . $name . '</span></b> printr:<br/>' : '';
     print '<span style="font-size:12px;">' . $nameLine . ' ' . $file . ' on line ' . $bt[0]['line'] . '</span>';
@@ -31,7 +26,7 @@ function debug($var, $name = '')
     print '<pre>';
     if (is_scalar($var))
         var_dump($var);
-    elseif ($var instanceof CActiveRecord)
+    elseif (class_exists('CActiveRecord', false) && $var instanceof CActiveRecord)
         print_r($var->attributes);
     else
         print_r($var);
