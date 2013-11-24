@@ -1,25 +1,24 @@
 <?php
 
 /**
- * NOTE: This file is not loaded.
- * It exists so storm links application components correctly.
+ * Application is not loaded. It exists so phpStorm links to application components correctly.
  *
  * @property array $onEndRequest
  * @property array $onError
  * @property array $onException
  * @property string $theme
- * @property YdDressing $dressing
- * @property YdClientScript $clientScript
- * @property YdReturnUrl $returnUrl
- * @property YdWebUser $user
  * @property CFormatter $format
  * @property CMemCache $cache
  * @property CApcCache $cacheApc
  * @property CDbCache $cacheDb
  * @property CFileCache $cacheFile
- * @property CDbConnection $dbCre
- * @property Email $email
- * @property MailChimp $mailChimp
+ * @property YdDressing $dressing
+ * @property YdClientScript $clientScript
+ * @property YdReturnUrl $returnUrl
+ * @property YdWebUser $user
+ * @property YdAuditTracker $auditTracker
+ * @property YdMailChimp $mailChimp
+ * @property YdEmail $email
  *
  * @method YdClientScript getClientScript() getClientScript()
  * @method YdReturnUrl getReturnUrl() getReturnUrl()
