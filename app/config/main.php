@@ -67,17 +67,11 @@ return array(
             'baseUrl' => PUBLIC_URL . '/assets',
             'linkAssets' => true,
         ),
-        'dressing' => array(
-            'auditUserRelation' => array(
-                'CBelongsToRelation',
-                'User',
-                'user_id',
-            ),
-        ),
     ),
     'preload' => array(
         'log',
         'fatalErrorCatch',
+        'auditTracker',
         'dressing',
         'bootstrap',
     ),
