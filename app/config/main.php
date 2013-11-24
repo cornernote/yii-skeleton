@@ -71,7 +71,7 @@ return array(
     'preload' => array(
         'log',
         'fatalErrorCatch',
-        'auditTracker',
+        //'auditTracker', // sql in dressing.migrations.m000000_000003_audit.sql
         'dressing',
         'bootstrap',
     ),
