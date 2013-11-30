@@ -26,8 +26,8 @@ return array(
     'aliases' => array(
         'public' => PUBLIC_PATH,
         'vendor' => VENDOR_PATH,
-        'dressing' => YII_DRESSING_PATH,
-        'bootstrap' => YII_BOOSTER_PATH, // needs to be named bootstrap
+        'dressing' => VENDOR_PATH . '/mrphp/yii-dressing/yii-dressing',
+        'bootstrap' => VENDOR_PATH . '/clevertech/yii-booster/src', // needs to be named bootstrap
     ),
     'import' => array(
         'application.models.*',
