@@ -1,6 +1,6 @@
 <?php
-defined('YII_DRESSING_PATH') or define('YII_DRESSING_PATH', str_replace(array('\\', '/'), DIRECTORY_SEPARATOR, dirname(__FILE__) . '/vendor/mrphp/yii-dressing/yii-dressing'));
-require_once(YII_DRESSING_PATH . '/YdConfig.php');
+defined('VENDOR_PATH') or define('VENDOR_PATH', str_replace(array('\\', '/'), DIRECTORY_SEPARATOR, dirname(__FILE__) . '/vendor'));
+require_once(VENDOR_PATH . '/mrphp/yii-dressing/yii-dressing/YdConfig.php');
 
 /**
  * Config is a helper class serving pre-application configuration.
@@ -18,6 +18,7 @@ class Config extends YdConfig
     public function __construct($file = null)
     {
         defined('YII_DEBUG') or define('YII_DEBUG', true);
+        defined('APP_PATH') or define('APP_PATH', str_replace(array('\\', '/'), DIRECTORY_SEPARATOR, dirname(__FILE__)));
         parent::__construct(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'config.json');
     }
 
