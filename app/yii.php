@@ -1,5 +1,5 @@
 <?php
-require_once(YII_DRESSING_PATH . '/YdBase.php');
+require_once(VENDOR_PATH . '/mrphp/yii-dressing/yii-dressing/YdBase.php');
 
 /**
  * Yii is a helper class serving common framework functionalities.
