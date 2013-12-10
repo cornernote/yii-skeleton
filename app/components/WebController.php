@@ -13,7 +13,7 @@ class WebController extends Controller
     /**
      * @var string the default layout for the controller view.
      */
-    public $layout = 'dressing.layouts.default';
+    public $layout = 'dressing.views.layouts.default';
 
     /**
      * @var array context menu items. This property will be assigned to {@link CMenu::items}.
