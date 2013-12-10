@@ -10,8 +10,6 @@
  */
 
 $this->pageTitle = t('Error');
-//$this->pageHeading = t('Error');
-//$this->breadcrumbs[] = t('Error');
 
 $this->beginWidget('bootstrap.widgets.TbHeroUnit', array(
     'heading' => t('Error'),
