@@ -45,19 +45,9 @@ class WebController extends Controller
             if ($theme = $user->user->getEavAttribute('theme'))
                 $app->setTheme($theme);
 
-        // set the heading from the title
-        if ($this->pageHeading === null)
-            $this->pageHeading = $this->pageTitle;
-
-        // decide if this is a modal
-        if ($this->isModal === null)
-            $this->isModal = $app->getRequest()->isAjaxRequest;
-
-        // register yii-dressing style
-        $app->clientScript->registerCSSFile($app->dressing->getAssetsUrl() . '/css/yii-dressing.css');
-
         // init widgets
         if (!$app->request->isAjaxRequest) {
+            $app->clientScript->registerCSSFile($app->dressing->getAssetsUrl() . '/css/yii-dressing.css');
             $this->widget('dressing.widgets.YdModal');
             $this->widget('dressing.components.YdFancyBox');
             $this->widget('dressing.widgets.YdQTip');
