@@ -1,16 +1,9 @@
 <?php
 /**
  * @var $this YdWebController
- * @var $content
- *
- * @author Brett O'Donnell <cornernote@gmail.com>
- * @author Zain Ul abidin <zainengineer@gmail.com>
- * @copyright 2013 Mr PHP
- * @link https://github.com/cornernote/yii-skeleton
- * @license https://raw.github.com/cornernote/yii-skeleton/master/license.txt
+ * @var $content string
  */
-?>
-<?php
+
 if ($this->showNavBar) {
     $this->widget('bootstrap.widgets.TbNavbar', array(
         'fixed' => 'top',
@@ -20,45 +13,60 @@ if ($this->showNavBar) {
     ));
 }
 ?>
-<div class="holder">
-    <div id="body">
-        <header class="container-fluid">
-            <?php
-            if ($this->pageHeading) {
-                echo '<h1 class="header">';
-                if ($this->pageIcon)
-                    echo '<i class="' . $this->pageIcon . '"></i> ';
-                echo $this->pageHeading;
-                if ($this->pageSubheading)
-                    echo '<small>' . $this->pageSubheading . '</small>';
-                echo '</h1>';
-            }
-            if ($this->menu) {
-                $this->widget('bootstrap.widgets.TbMenu', array(
-                    'id' => 'menu',
-                    'type' => 'tabs',
-                    'items' => $this->menu,
-                ));
-            }
-            if ($this->breadcrumbs) {
-                $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
-                    'links' => CMap::mergeArray($this->breadcrumbs, array($this->pageHeading)),
-                    'separator' => '<i class="icon-chevron-right"></i>',
-                ));
-            }
-            ?>
-        </header>
-        <div id="content" class="container-fluid">
-            <?php
-            echo user()->multiFlash();
-            echo $content;
-            ?>
-        </div>
-    </div>
-    <footer class="container-fluid">
+
+<div id="holder" class="content">
+    <header>
         <?php
-        $this->renderPartial('dressing.views.audit._footer');
-        echo '<p class="pull-right">' . l(t('Back to Top') . ' &uarr;', '#') . '</p>';
+        if ($this->pageHeading || $this->breadcrumbs || $this->menu) {
+            ?>
+            <div id="header">
+                <div class="container-fluid">
+                    <h1><?php echo $this->pageIcon ? '<i class="' . $this->pageIcon . '"></i> ' : ''; ?><?php echo $this->pageHeading; ?></h1>
+                    <?php
+                    if ($this->breadcrumbs) {
+                        $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+                            'links' => CMap::mergeArray($this->breadcrumbs, array($this->pageHeading)),
+                            'separator' => '<i class="icon-chevron-right"></i>',
+                            //'htmlOptions' => array('class' => 'pull-right'),
+                        ));
+                    }
+                    if ($this->menu) {
+                        $this->widget('bootstrap.widgets.TbMenu', array(
+                            'id' => 'menu',
+                            'type' => 'tabs',
+                            'items' => $this->menu,
+                        ));
+                    }
+                    ?>
+                </div>
+            </div>
+        <?php
+        }
         ?>
+    </header>
+
+    <div id="body" class="container-fluid">
+        <?php
+        echo user()->multiFlash();
+        echo $content;
+        ?>
+    </div>
+
+    <footer id="footer">
+        <div id="copyright">
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <p><?php echo '&copy; ' . date('Y') . ' ' . app()->name; ?>
+
+                            <?php $this->renderPartial('dressing.views.audit._footer'); ?>
+                            <span id="totop" class="pull-right"><a href="#">Back to Top
+                                    <i class="icon-arrow-up"></i></a></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
+
 </div>
