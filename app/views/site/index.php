@@ -9,7 +9,7 @@
  * @license http://www.gnu.org/copyleft/gpl.html
  */
 
-$this->pageTitle = $this->pageHeading = Yii::app()->name;
+$this->pageTitle = Yii::app()->name;
 
 echo '<p>You may change the content of this page by modifying the file <code>' . __FILE__ . '</code>.</p>';
 if (!YdHelper::tableExists('migration')) {
