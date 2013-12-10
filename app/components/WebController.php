@@ -151,7 +151,7 @@ class WebController extends Controller
         if ($this->loadModel === null) {
             $this->loadModel = CActiveRecord::model($model)->findbyPk($id);
             if ($this->loadModel === null)
-                throw new CHttpException(404, Yii::t('dressing', 'The requested page does not exist.'));
+                throw new CHttpException(404, Yii::t('app', 'The requested page does not exist.'));
         }
         return $this->loadModel;
     }
