@@ -68,6 +68,9 @@ return array(
             'baseUrl' => PUBLIC_URL . '/assets',
             'linkAssets' => true,
         ),
+        'globalInit' => array(
+            'class' => 'application.components.GlobalInit',
+        ),
         'dressing' => array(
             'class' => 'dressing.YdDressing',
         ),
@@ -180,8 +183,8 @@ return array(
         'log',
         'fatalErrorCatch',
         //'auditTracker', // sql in dressing.migrations.m000000_000003_audit.sql
-        'dressing',
         'bootstrap',
+        'globalInit',
     ),
     'controllerMap' => array(
         'account' => 'dressing.controllers.YdAccountController',
