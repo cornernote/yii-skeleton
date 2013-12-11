@@ -31,8 +31,9 @@ return array(
     ),
     'import' => array(
         'application.models.*',
-        'application.commands.*',
         'application.components.*',
+        'dressing.models.*',
+        'dressing.components.*',
     ),
 
     // libraries
