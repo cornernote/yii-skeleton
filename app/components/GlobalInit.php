@@ -12,24 +12,31 @@ class GlobalInit
     {
         parent::init();
         $app = Yii::app();
-        $user = $app->user;
 
+        // set user theme
+        $user = $app->user;
+        if ($user->user && $user->user->asa('EavBehavior'))
+            if ($theme = $user->user->getEavAttribute('theme'))
+                $app->setTheme($theme);
+                
+        // add style/script files for non-ajax requests
         if (!$app->request->isAjaxRequest) {
-            // fake controller
-            $controller = new CController('preloadController');
-    
-            // set user theme
-            if ($user->user && $user->user->asa('EavBehavior'))
-                if ($theme = $user->user->getEavAttribute('theme'))
-                    $app->setTheme($theme);
-    
+
             // init widgets
-            if (!$app->request->isAjaxRequest) {
-                $app->clientScript->registerCSSFile($app->dressing->getAssetsUrl() . '/css/yii-dressing.css');
-                $this->widget('dressing.widgets.YdModal');
-                $this->widget('dressing.widgets.YdFancyBox');
-                $this->widget('dressing.widgets.YdQTip');
-            }
+            $controller = new CController('preloadController');
+            $controller->widget('dressing.widgets.YdModal');
+            $controller->widget('dressing.widgets.YdFancyBox');
+            $controller->widget('dressing.widgets.YdQTip');
+
+            // dressing styles
+            $cs = $app->clientScript;
+            $cs->registerCSSFile($app->dressing->getAssetsUrl() . '/css/yii-dressing.css');
+            
+            // app style/script
+            $assetsUrl = $app->getAssetManager()->publish(Yii::getPathOfAlias('application.assets'));
+            $cs->registerCSSFile($assetsUrl . '/css/app.css', 'screen, projection');
+            $cs->registerScriptFile($assetsUrl . '/js/app.js');
+            
         }
     }
 
