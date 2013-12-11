@@ -13,7 +13,7 @@
  * @author Zain Ul abidin <zainengineer@gmail.com>
  * @copyright 2013 Mr PHP
  * @link https://github.com/cornernote/yii-skeleton
- * @license https://raw.github.com/cornernote/yii-skeleton/master/license.txt
+ * @license BSD-3-Clause https://raw.github.com/cornernote/yii-skeleton/master/license.txt
  */
 
 if (Yii::app()->request->isAjaxRequest) {

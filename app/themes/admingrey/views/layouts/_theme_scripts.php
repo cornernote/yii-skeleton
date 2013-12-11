@@ -4,7 +4,7 @@
  * @author Zain Ul abidin <zainengineer@gmail.com>
  * @copyright 2013 Mr PHP
  * @link https://github.com/cornernote/yii-skeleton
- * @license https://raw.github.com/cornernote/yii-skeleton/master/license.txt
+ * @license BSD-3-Clause https://raw.github.com/cornernote/yii-skeleton/master/license.txt
  */
 $assetPath = app()->theme->basePath . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR;
 $assetUrl = app()->getAssetManager()->publish($assetPath, false, 1, YII_DEBUG);
