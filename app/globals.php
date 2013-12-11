@@ -268,7 +268,8 @@ function bp()
  */
 function au()
 {
-    return Yii::app()->getAssetManager()->publish(Yii::getPathOfAlias('application.assets'), false, 1, YII_DEBUG);
+    return Yii::app()->getAssetManager()->publish(Yii::getPathOfAlias('application.assets'));
+    //return Yii::app()->getAssetManager()->publish(Yii::getPathOfAlias('application.assets'), false, 1, YII_DEBUG);
 }
 
 /**
