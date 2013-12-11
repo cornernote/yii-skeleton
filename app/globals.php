@@ -141,11 +141,7 @@ function returnUrl()
  */
 function url($route, $params = array(), $ampersand = '&')
 {
-    if (is_array($route)) {
-        $params = CMap::mergeArray($route, $params);
-        $route = array_shift($params);
-    }
-    return Yii::app()->createUrl($route, $params, $ampersand);
+    return Yii::app()->createUrl(is_array($route) ? $route[0] : $route, is_array($route) ? array_splice($route, 1) : $params, $ampersand);
 }
 
 /**
@@ -160,11 +156,7 @@ function url($route, $params = array(), $ampersand = '&')
  */
 function absoluteUrl($route, $params = array(), $schema = '', $ampersand = '&')
 {
-    if (is_array($route)) {
-        $params = CMap::mergeArray($route, $params);
-        $route = array_shift($params);
-    }
-    return Yii::app()->createAbsoluteUrl($route, $params, $schema, $ampersand);
+    return Yii::app()->createAbsoluteUrl(is_array($route) ? $route[0] : $route, is_array($route) ? array_splice($route, 1) : $params, $schema, $ampersand);
 }
 
 /**
