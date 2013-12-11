@@ -27,7 +27,7 @@ class GlobalInit
             if (!$app->request->isAjaxRequest) {
                 $app->clientScript->registerCSSFile($app->dressing->getAssetsUrl() . '/css/yii-dressing.css');
                 $this->widget('dressing.widgets.YdModal');
-                $this->widget('dressing.components.YdFancyBox');
+                $this->widget('dressing.widgets.YdFancyBox');
                 $this->widget('dressing.widgets.YdQTip');
             }
         }
