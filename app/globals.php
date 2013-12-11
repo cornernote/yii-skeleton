@@ -13,24 +13,30 @@
  * Debug your variables in the coolest way possible
  *
  * @param $var
- * @param string $name
+ * @param string|null $name
+ * @param bool $attributesOnly
  */
-function debug($var, $name = '')
+function debug($var, $name = null, $attributesOnly = true)
 {
     $bt = debug_backtrace();
     $file = str_ireplace(dirname(dirname(__FILE__)), '', $bt[0]['file']);
-    print '<div style="background: #FFFBD6">';
-    $nameLine = $name ? '<b> <span style="font-size:18px;">' . $name . '</span></b> printr:<br/>' : '';
-    print '<span style="font-size:12px;">' . $nameLine . ' ' . $file . ' on line ' . $bt[0]['line'] . '</span>';
-    print '<div style="border:1px solid #000;">';
-    print '<pre>';
+    if (!class_exists('CActiveRecord', false))
+        $attributesOnly = false;
+    $name = $name ? '<b><span style="font-size:18px;">' . $name . ($attributesOnly ? ' [attributes]' : '') . '</span></b>:<br/>' : '';
+    echo '<div style="background: #FFFBD6">';
+    echo '<span style="font-size:12px;">' . $name . ' ' . $file . ' on line ' . $bt[0]['line'] . '</span>';
+    echo '<div style="border:1px solid #000;">';
+    echo '<pre>';
     if (is_scalar($var))
         var_dump($var);
-    elseif (class_exists('CActiveRecord', false) && $var instanceof CActiveRecord)
+    elseif ($attributesOnly && $var instanceof CActiveRecord)
         print_r($var->attributes);
+    elseif ($attributesOnly && is_array($var) && current($var) instanceof CActiveRecord)
+        foreach ($var as $_var)
+            print_r($_var->attributes);
     else
         print_r($var);
-    print '</pre></div></div>';
+    echo '</pre></div></div>';
 }
 
 /**
