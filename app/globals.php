@@ -45,7 +45,7 @@ function app()
 
 /**
  * Shortcut to Yii::app()->db
- *
+ * 
  * @return CDbConnection
  */
 function db()
@@ -56,18 +56,11 @@ function db()
 /**
  * Shortcut to Yii::app()->cache
  *
- * @param string $cache mem|file|db
  * @return CCache
  */
-function cache($cache = null)
+function cache()
 {
-    if ($cache == 'file')
-        $cache = 'cacheFile';
-    elseif ($cache == 'db')
-        $cache = 'cacheDb';
-    else
-        $cache = 'cache';
-    return Yii::app()->$cache;
+    return Yii::app()->cache;
 }
 
 /**
