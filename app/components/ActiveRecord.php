@@ -24,36 +24,4 @@ class ActiveRecord extends CActiveRecord
         return parent::model($className);
     }
 
-    /**
-     * Allows setting default attributes before validation and saving in a single method.
-     *
-     * @see beforeValidate()
-     * @see beforeSave()
-     */
-    public function setDefaultAttributes()
-    {
-    }
-
-    /**
-     * Actions to be performed before the model is saved
-     *
-     * @return bool
-     */
-    protected function beforeValidate()
-    {
-        $this->setDefaultAttributes();
-        return parent::beforeValidate();
-    }
-
-    /**
-     * Actions to be performed before the model is saved
-     *
-     * @return bool
-     */
-    protected function beforeSave()
-    {
-        $this->setDefaultAttributes();
-        return parent::beforeSave();
-    }
-
 }
