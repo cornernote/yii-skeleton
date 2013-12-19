@@ -20,7 +20,7 @@ class SiteController extends YdWebController
     {
         return array(
             array('allow',
-                'actions' => array('index', 'error', 'page'),
+                'actions' => array('index', 'page', 'error', 'clearCache'),
                 'users' => array('*'),
             ),
             array('deny', 'users' => array('*')),
@@ -70,5 +70,25 @@ class SiteController extends YdWebController
         }
     }
 
+    /**
+     * Clears site cache
+     */
+    public function actionClearCache()
+    {
+        // cache
+        cache()->flush();
+        cache('apc')->flush();
+        cache('db')->flush();
+        cache('file')->flush();
 
+        // assets
+        if (!Yii::app()->getAssetManager()->linkAssets) {
+            YdFileHelper::removeDirectory(Yii::app()->getAssetManager()->basePath, false);
+        }
+
+        // all done
+        user()->addFlash(t('Server cache has been cleared.'), 'success');
+        $this->redirect(Yii::app()->returnUrl->getUrl());
+    }
+    
 }
