@@ -20,8 +20,12 @@ class SiteController extends YdWebController
     {
         return array(
             array('allow',
-                'actions' => array('index', 'page', 'error', 'clearCache'),
+                'actions' => array('index', 'page', 'error'),
                 'users' => array('*'),
+            ),
+            array('allow',
+                'actions' => array('clearCache'),
+                'roles' => array('admin'),
             ),
             array('deny', 'users' => array('*')),
         );
