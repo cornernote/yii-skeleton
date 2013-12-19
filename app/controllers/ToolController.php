@@ -21,22 +21,10 @@ class ToolController extends YdWebController
     {
         return array(
             array('allow',
-                'actions' => array('index', 'clearCache', 'generateProperties'),
+                'actions' => array('index', 'clearCache'),
                 'roles' => array('admin'),
             ),
             array('deny', 'users' => array('*')),
-        );
-    }
-
-    /**
-     * @return array
-     */
-    public function actions()
-    {
-        return array(
-            'generateProperties' => array(
-                'class' => 'dressing.actions.YdGeneratePropertiesAction',
-            ),
         );
     }
 
