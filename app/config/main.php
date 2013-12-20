@@ -92,7 +92,7 @@ return array(
             ),
         ),
         'returnUrl' => array(
-            'class' => 'dressing.components.YdReturnUrl',
+            'class' => 'vendor.mrphp.yii-return-url.components.EReturnUrl',
         ),
         'bootstrap' => array(
             'class' => 'bootstrap.components.Bootstrap',
