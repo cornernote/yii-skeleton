@@ -27,7 +27,7 @@ return array(
         'public' => PUBLIC_PATH,
         'vendor' => VENDOR_PATH,
         'dressing' => VENDOR_PATH . '/mrphp/yii-dressing/yii-dressing',
-        'bootstrap' => VENDOR_PATH . '/clevertech/yii-booster/src', // needs to be named bootstrap
+        'bootstrap' => VENDOR_PATH . '/crisu83/yiistrap', // needs to be named bootstrap
     ),
     'import' => array(
         'application.models.*',
@@ -36,8 +36,42 @@ return array(
         'dressing.components.*',
     ),
 
-    // libraries
+    // maps
+    'controllerMap' => array(
+        'account' => 'dressing.controllers.YdAccountController',
+        'attachment' => 'dressing.controllers.YdAttachmentController',
+        'lookup' => 'dressing.controllers.YdLookupController',
+        'setting' => 'dressing.controllers.YdSettingController',
+    ),
+    'commandMap' => array(
+        'migrate' => array(
+            'class' => 'system.cli.commands.MigrateCommand',
+            'migrationPath' => 'application.migrations',
+            'migrationTable' => 'migration',
+            'connectionID' => 'db',
+            'templateFile' => 'dressing.migrations.templates.migrate_template',
+        ),
+        'emailSpool' => 'email.commands.EmailSpoolCommand',
+    ),
+
+    // preload
+    'preload' => array(
+        'log',
+        'errorHandler',
+        'globalInit',
+    ),
+
+    // components
     'components' => array(
+        'assetManager' => array(
+            'class' => 'dressing.components.YdAssetManager',
+            'basePath' => PUBLIC_PATH . DS . 'assets',
+            'baseUrl' => PUBLIC_URL . '/assets',
+            'linkAssets' => true,
+        ),
+        'bootstrap' => array(
+            'class' => 'bootstrap.components.TbApi',
+        ),
         'cache' => array(
             'class' => 'CMemCache',
             'keyPrefix' => vd($app['id'], 'app') . '.',
@@ -49,6 +83,18 @@ return array(
                 ),
             ),
         ),
+        'cacheApc' => array(
+            'class' => 'CApcCache',
+        ),
+        'cacheDb' => array(
+            'class' => 'CDbCache',
+        ),
+        'cacheFile' => array(
+            'class' => 'CFileCache',
+        ),
+        'clientScript' => array(
+            'class' => 'YdClientScript',
+        ),
         'db' => array(
             'connectionString' => "mysql:host={$db['host']};dbname={$db['name']}",
             'emulatePrepare' => true,
@@ -59,27 +105,54 @@ return array(
             'enableProfiling' => (YII_DEBUG && YII_DEBUG_TOOLBAR),
             'enableParamLogging' => (YII_DEBUG && YII_DEBUG_TOOLBAR),
         ),
-        'themeManager' => array(
-            'basePath' => APP_PATH . DS . 'themes',
+        'dressing' => array(
+            'class' => 'dressing.YdDressing',
         ),
-        'assetManager' => array(
-            'class' => 'dressing.components.YdAssetManager',
-            'basePath' => PUBLIC_PATH . DS . 'assets',
-            'baseUrl' => PUBLIC_URL . '/assets',
-            'linkAssets' => true,
+        'emailManager' => array(
+            'class' => 'email.components.EmailManager',
+        ),
+        'errorHandler' => array(
+            'class' => 'audit.components.AuditErrorHandler',
+            'trackAllRequests' => true,
+            'errorAction' => 'site/error',
         ),
         'globalInit' => array(
             'class' => 'application.components.GlobalInit',
         ),
-        'dressing' => array(
-            'class' => 'dressing.YdDressing',
+        'log' => array(
+            'class' => 'CLogRouter',
+            'routes' => array(
+                array(
+                    'class' => YII_DEBUG ? 'CWebLogRoute' : 'CFileLogRoute',
+                    'levels' => 'error, warning',
+                ),
+                array(
+                    'class' => 'audit.components.AuditLogRoute',
+                    'levels' => 'error, warning, audit, profile',
+                ),
+                array(
+                    'class' => 'vendor.malyshev.yii-debug-toolbar.YiiDebugToolbarRoute',
+                    'levels' => YII_DEBUG_TOOLBAR ? 'profile' : '',
+                ),
+            ),
         ),
-        'errorHandler' => array(
-            'class' => 'dressing.components.YdErrorHandler',
-            'errorAction' => 'site/error',
+        'reCapture' => array(
+            'class' => 'dressing.components.YdReCapture',
         ),
-        'fatalErrorCatch' => array(
-            'class' => 'dressing.components.YdFatalErrorCatch',
+        'returnUrl' => array(
+            'class' => 'vendor.cornernote.yii-return-url.components.EReturnUrl',
+        ),
+        'session' => array(
+            'class' => 'CDbHttpSession',
+            //'class' => 'CCacheHttpSession', // caused an issue with flash messages not clearing
+            //'cacheID' => 'cacheApc',
+        ),
+        'themeManager' => array(
+            'basePath' => APP_PATH . DS . 'themes',
+        ),
+        'urlManager' => array(
+            'urlFormat' => isset($_GET['r']) ? 'get' : 'path', // allow filters in audit/index work
+            'showScriptName' => false,
         ),
         'user' => array(
             'class' => 'dressing.components.YdWebUser',
@@ -90,51 +163,6 @@ return array(
                     'class' => 'dressing.behaviors.YdWebUserFlashBehavior',
                 ),
             ),
-        ),
-        'returnUrl' => array(
-            'class' => 'vendor.mrphp.yii-return-url.components.EReturnUrl',
-        ),
-        'bootstrap' => array(
-            'class' => 'bootstrap.components.Bootstrap',
-            'fontAwesomeCss' => true,
-        ),
-        'urlManager' => array(
-            'urlFormat' => isset($_GET['r']) ? 'get' : 'path', // allow filters in audit/index work
-            'showScriptName' => false,
-        ),
-        'cacheFile' => array(
-            'class' => 'CFileCache',
-        ),
-        'cacheDb' => array(
-            'class' => 'CDbCache',
-        ),
-        'cacheApc' => array(
-            'class' => 'CApcCache',
-        ),
-        'log' => array(
-            'class' => 'CLogRouter',
-        ),
-        'clientScript' => array(
-            'class' => 'YdClientScript',
-        ),
-        'session' => array(
-            'class' => 'CCacheHttpSession',
-            'cacheID' => 'cacheApc',
-        ),
-        'email' => array(
-            'class' => 'dressing.components.YdEmail',
-        ),
-        'swiftMailer' => array(
-            'class' => 'dressing.components.YdSwiftMailer',
-        ),
-        'auditTracker' => array(
-            'class' => 'dressing.components.YdAuditTracker',
-        ),
-        'format' => array(
-            'class' => 'dressing.components.YdFormatter',
-        ),
-        'reCapture' => array(
-            'class' => 'dressing.components.YdReCapture',
         ),
         'widgetFactory' => array(
             'widgets' => array(
@@ -176,40 +204,21 @@ return array(
                 ),
             ),
         ),
-
-        
     ),
-    'preload' => array(
-        'log',
-        'fatalErrorCatch',
-        //'auditTracker', // sql in dressing.migrations.m000000_000003_audit.sql
-        'bootstrap',
-        'globalInit',
-    ),
-    'controllerMap' => array(
-        'account' => 'dressing.controllers.YdAccountController',
-        'attachment' => 'dressing.controllers.YdAttachmentController',
-        'audit' => 'dressing.controllers.YdAuditController',
-        'auditTrail' => 'dressing.controllers.YdAuditTrailController',
-        'contactUs' => 'dressing.controllers.YdContactUsController',
-        'emailSpool' => 'dressing.controllers.YdEmailSpoolController',
-        'emailTemplate' => 'dressing.controllers.YdEmailTemplateController',
-        'error' => 'dressing.controllers.YdErrorController',
-        'lookup' => 'dressing.controllers.YdLookupController',
-        'siteMenu' => 'dressing.controllers.YdSiteMenuController',
-        'role' => 'dressing.controllers.YdRoleController',
-        'setting' => 'dressing.controllers.YdSettingController',
-        'user' => 'dressing.controllers.YdUserController',
-    ),
-    'commandMap' => array(
-        'migrate' => array(
-            'class' => 'system.cli.commands.MigrateCommand',
-            'migrationPath' => 'application.migrations',
-            'migrationTable' => 'migration',
-            'connectionID' => 'db',
-            'templateFile' => 'dressing.migrations.templates.migrate_template',
+    
+    // modules
+    'modules' => array(
+        'audit' => array(
+            'class' => 'vendor.cornernote.yii-audit-module.audit.AuditModule',
+            //'autoCreateTables' => false,
+            'adminUsers' => array('brett@mrphp.com.au'),
+            'userViewUrl' => array('/user/view', 'id' => '--user_id--'),
         ),
-        'emailSpool' => 'dressing.commands.YdEmailSpoolCommand',
-        'errorEmail' => 'dressing.commands.YdErrorEmailCommand',
+        'email' => array(
+            'class' => 'vendor.cornernote.yii-email-module.email.EmailModule',
+            //'autoCreateTables' => false,
+            'adminUsers' => array('brett@mrphp.com.au'),
+        ),
     ),
+    
 );
