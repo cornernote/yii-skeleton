@@ -223,8 +223,8 @@ return array(
             'class' => 'system.gii.GiiModule',
             'generatorPaths' => array(
                 'dressing.gii',
-                'vendor.mrphp.gii-modeldoc-generator',
-                'vendor.mrphp.gii-prefixmodel-generator',
+                'vendor.cornernote.gii-modeldoc-generator',
+                'vendor.cornernote.gii-prefixmodel-generator',
                 'bootstrap.gii',
             ),
             'password' => YII_DEBUG ? false : null,
