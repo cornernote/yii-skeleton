@@ -219,6 +219,16 @@ return array(
             //'autoCreateTables' => false,
             'adminUsers' => array('brett@mrphp.com.au'),
         ),
+        'gii' => array(
+            'class' => 'system.gii.GiiModule',
+            'generatorPaths' => array(
+                'dressing.gii',
+                'vendor.mrphp.gii-modeldoc-generator',
+                'vendor.mrphp.gii-prefixmodel-generator',
+                'bootstrap.gii',
+            ),
+            'password' => YII_DEBUG ? false : null,
+        ),
     ),
     
 );
