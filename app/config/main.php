@@ -26,7 +26,7 @@ return array(
     'aliases' => array(
         'public' => PUBLIC_PATH,
         'vendor' => VENDOR_PATH,
-        'dressing' => VENDOR_PATH . '/mrphp/yii-dressing/yii-dressing',
+        'dressing' => VENDOR_PATH . '/cornernote/yii-dressing/yii-dressing',
         'bootstrap' => VENDOR_PATH . '/crisu83/yiistrap', // needs to be named bootstrap
     ),
     'import' => array(
