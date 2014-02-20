@@ -17,12 +17,7 @@ install composer
 curl http://getcomposer.org/installer | php
 ```
 
-install packages, edit `composer.json` then
-```
-php composer.phar install
-```
-
-update packages to latest versions, edit `composer.json` then
+add required packages to `composer.json` then
 ```
 php composer.phar update
 ```
