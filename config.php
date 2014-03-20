@@ -1,6 +1,6 @@
 <?php
 defined('VENDOR_PATH') or define('VENDOR_PATH', str_replace(array('\\', '/'), DIRECTORY_SEPARATOR, dirname(__FILE__) . '/vendor'));
-require_once(VENDOR_PATH . '/mrphp/yii-dressing/yii-dressing/YdConfig.php');
+require_once(VENDOR_PATH . '/cornernote/yii-dressing/yii-dressing/YdConfig.php');
 
 /**
  * Config is a helper class serving pre-application configuration.
