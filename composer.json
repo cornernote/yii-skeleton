@@ -4,7 +4,10 @@
 		"yiisoft/yii": "1.1.14",
 		"cornernote/yii-dressing": "dev-master",
 		"cornernote/yii-audit-module": "dev-master",
+		"cornernote/yii-account-module": "dev-master",
+		"cornernote/yii-email-module": "dev-master",
 		"cornernote/yii-return-url": "dev-master",
+		"cornernote/gii-tasty-templates": "dev-master",
 		"crisu83/yiistrap": "dev-master",
 		"malyshev/yii-debug-toolbar": "dev-master"
 	},
