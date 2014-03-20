@@ -85,7 +85,7 @@ function param($name)
 /**
  * Shortcut to Yii::app()->clientScript
  *
- * @return YdClientScript
+ * @return CClientScript
  */
 function cs()
 {
@@ -95,7 +95,7 @@ function cs()
 /**
  * Shortcut to Yii::app()->user
  *
- * @return YdWebUser
+ * @return CWebUser
  */
 function user()
 {
@@ -110,24 +110,6 @@ function user()
 function request()
 {
     return Yii::app()->getRequest();
-}
-
-/**
- * Shortcut to Yii::app()->email
- *
- * @return YdEmail
- */
-function email()
-{
-    return Yii::app()->email;
-}
-
-/**
- * @return YdReturnUrl
- */
-function returnUrl()
-{
-    return Yii::app()->returnUrl;
 }
 
 /**
@@ -262,26 +244,6 @@ function au()
 {
     return Yii::app()->getAssetManager()->publish(Yii::getPathOfAlias('application.assets'));
     //return Yii::app()->getAssetManager()->publish(Yii::getPathOfAlias('application.assets'), false, 1, YII_DEBUG);
-}
-
-/**
- * Vendor Path
- *
- * @return string
- */
-function vp()
-{
-    return Yii::getPathOfAlias('vendor');
-}
-
-/**
- * Public Path
- *
- * @return string
- */
-function pp()
-{
-    return Yii::getPathOfAlias('public');
 }
 
 /**
