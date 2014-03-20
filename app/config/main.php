@@ -61,7 +61,6 @@ return array(
     'preload' => array(
         'log',
         'errorHandler',
-        'globalInit',
     ),
 
     // components
@@ -118,9 +117,6 @@ return array(
             'class' => 'audit.components.AuditErrorHandler',
             'trackAllRequests' => true,
             'errorAction' => 'site/error',
-        ),
-        'globalInit' => array(
-            'class' => 'application.components.GlobalInit',
         ),
         'log' => array(
             'class' => 'CLogRouter',
