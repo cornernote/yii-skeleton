@@ -13,15 +13,11 @@
  * @property CDbCache $cacheDb
  * @property CFileCache $cacheFile
  * @property YdDressing $dressing
- * @property YdClientScript $clientScript
- * @property YdReturnUrl $returnUrl
- * @property YdWebUser $user
- * @property YdAuditTracker $auditTracker
- * @property YdMailChimp $mailChimp
- * @property YdEmail $email
+ * @property CClientScript $clientScript
+ * @property EReturnUrl $returnUrl
+ * @property CWebUser $user
  *
- * @method YdClientScript getClientScript() getClientScript()
- * @method YdReturnUrl getReturnUrl() getReturnUrl()
+ * @method CClientScript getClientScript() getClientScript()
  *
  * @author Brett O'Donnell <cornernote@gmail.com>
  * @author Zain Ul abidin <zainengineer@gmail.com>
@@ -31,6 +27,5 @@
  */
 class Application extends CWebApplication
 {
-
 
 }
