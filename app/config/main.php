@@ -158,7 +158,7 @@ return array(
             'showScriptName' => false,
         ),
         'user' => array(
-            'class' => 'dressing.components.YdWebUser',
+            'class' => 'account.components.AccountWebUser',
             'allowAutoLogin' => true,
             'loginUrl' => array('/account/login'),
             'behaviors' => array(
