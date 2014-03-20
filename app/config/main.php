@@ -102,8 +102,8 @@ return array(
             'password' => $db['pass'],
             'charset' => 'utf8',
             'schemaCachingDuration' => 3600,
-            'enableProfiling' => (YII_DEBUG && YII_DEBUG_TOOLBAR),
-            'enableParamLogging' => (YII_DEBUG && YII_DEBUG_TOOLBAR),
+            'enableProfiling' => YII_DEBUG,
+            'enableParamLogging' => YII_DEBUG,
         ),
         'dressing' => array(
             'class' => 'dressing.YdDressing',
@@ -132,7 +132,7 @@ return array(
                 ),
                 array(
                     'class' => 'vendor.malyshev.yii-debug-toolbar.YiiDebugToolbarRoute',
-                    'levels' => YII_DEBUG_TOOLBAR ? 'profile' : '',
+                    'levels' => 'profile',
                 ),
             ),
         ),
