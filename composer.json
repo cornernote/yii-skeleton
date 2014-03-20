@@ -3,6 +3,7 @@
 	"require": {
 		"yiisoft/yii": "1.1.14",
 		"cornernote/yii-dressing": "dev-master",
+		"cornernote/yii-audit-module": "dev-master",
 		"crisu83/yiistrap": "dev-master",
 		"malyshev/yii-debug-toolbar": "dev-master"
 	},
