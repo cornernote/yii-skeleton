@@ -17,6 +17,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="language" content="en"/>
+    <?php
+    // init widgets
+    $this->widget('dressing.widgets.YdModal');
+    $this->widget('dressing.widgets.YdFancyBox');
+    $this->widget('dressing.widgets.YdQTip');
+    // dressing styles
+    $cs = $app->clientScript;
+    $cs->registerCSSFile($app->dressing->getAssetsUrl() . '/css/yii-dressing.css');
+    // app style/script
+    $cs->registerCSSFile(au() . '/css/app.css', 'screen, projection');
+    $cs->registerScriptFile(au() . '/js/app.js');
+    ?>
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 <body id="top" class="<?php echo $this->id . '-' . $this->action->id; ?>">
