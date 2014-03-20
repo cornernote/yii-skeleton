@@ -24,7 +24,7 @@ return array(
     'basePath' => APP_PATH,
     'runtimePath' => dirname(APP_PATH) . DS . 'runtime',
     'aliases' => array(
-        'public' => PUBLIC_PATH,
+        'public' => WWW_PATH,
         'vendor' => VENDOR_PATH,
         'dressing' => VENDOR_PATH . '/cornernote/yii-dressing/yii-dressing',
         'bootstrap' => VENDOR_PATH . '/crisu83/yiistrap', // needs to be named bootstrap
@@ -65,8 +65,8 @@ return array(
     'components' => array(
         'assetManager' => array(
             'class' => 'dressing.components.YdAssetManager',
-            'basePath' => PUBLIC_PATH . DS . 'assets',
-            'baseUrl' => PUBLIC_URL . '/assets',
+            'basePath' => WWW_PATH . DS . 'assets',
+            'baseUrl' => WWW_URL . '/assets',
             'linkAssets' => true,
         ),
         'bootstrap' => array(
