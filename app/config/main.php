@@ -26,6 +26,9 @@ return array(
     'aliases' => array(
         'public' => WWW_PATH,
         'vendor' => VENDOR_PATH,
+        'audit' => VENDOR_PATH . '/cornernote/yii-audit-module/audit',
+        'account' => VENDOR_PATH . '/cornernote/yii-account-module/account',
+        'email' => VENDOR_PATH . '/cornernote/yii-email-module/email',
         'dressing' => VENDOR_PATH . '/cornernote/yii-dressing/yii-dressing',
         'bootstrap' => VENDOR_PATH . '/crisu83/yiistrap', // needs to be named bootstrap
     ),
@@ -208,21 +211,34 @@ return array(
     
     // modules
     'modules' => array(
+        'account' => array(
+            'class' => 'account.AccountModule',
+            'useAccountUserController' => false,
+            'layout' => 'application.views.layouts.default',
+            'userClass' => 'User',
+            'userIdentityClass' => 'UserIdentity',
+        ),
         'audit' => array(
-            'class' => 'vendor.cornernote.yii-audit-module.audit.AuditModule',
+            'class' => 'audit.AuditModule',
             //'autoCreateTables' => false,
-            'adminUsers' => array('brett@mrphp.com.au'),
+            'adminUsers' => array('admin'),
             'userViewUrl' => array('/user/view', 'id' => '--user_id--'),
         ),
         'email' => array(
-            'class' => 'vendor.cornernote.yii-email-module.email.EmailModule',
+            'class' => 'email.EmailModule',
             //'autoCreateTables' => false,
-            'adminUsers' => array('brett@mrphp.com.au'),
+            'adminUsers' => array('admin'),
+        ),
+        'menu' => array(
+            'class' => 'menu.MenuModule',
+            //'autoCreateTables' => false,
+            'adminUsers' => array('admin'),
+            'connectionID' => 'db',
         ),
         'gii' => array(
             'class' => 'system.gii.GiiModule',
             'generatorPaths' => array(
-                'dressing.gii',
+                'vendor.cornernote.gii-tasty-templates.tasty',
                 'vendor.cornernote.gii-modeldoc-generator',
                 'vendor.cornernote.gii-prefixmodel-generator',
                 'bootstrap.gii',
