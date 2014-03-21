@@ -29,6 +29,7 @@ return array(
         'audit' => VENDOR_PATH . '/cornernote/yii-audit-module/audit',
         'account' => VENDOR_PATH . '/cornernote/yii-account-module/account',
         'email' => VENDOR_PATH . '/cornernote/yii-email-module/email',
+        'menu' => VENDOR_PATH . '/cornernote/yii-menu-module/menu',
         'dressing' => VENDOR_PATH . '/cornernote/yii-dressing/yii-dressing',
         'bootstrap' => VENDOR_PATH . '/crisu83/yiistrap', // needs to be named bootstrap
     ),
