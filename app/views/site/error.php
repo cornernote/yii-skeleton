@@ -1,6 +1,7 @@
 <?php
 /**
- * @var $this SiteController
+ * @var SiteController $this
+ * @var string $message
  *
  * @author Brett O'Donnell <cornernote@gmail.com>
  * @author Zain Ul abidin <zainengineer@gmail.com>
@@ -9,10 +10,10 @@
  * @license BSD-3-Clause https://raw.github.com/cornernote/yii-skeleton/master/license.txt
  */
 
-$this->pageTitle = t('Error');
+$this->pageTitle = Yii::t('app', 'Error');
 
-$this->beginWidget('bootstrap.widgets.TbHeroUnit', array(
+$this->widget('bootstrap.widgets.TbHeroUnit', array(
     'heading' => t('Error'),
+    'content' => '<p>' . CHtml::encode($message) . '</p>',
 ));
-echo '<p>' . CHtml::encode($message) . '</p>';
-$this->endWidget();
+
