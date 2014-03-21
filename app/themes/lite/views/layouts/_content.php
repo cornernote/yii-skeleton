@@ -12,7 +12,7 @@
 
 $this->widget('widgets.Navbar', array(
     'id' => 'navbar',
-    'fixed' => 'top',
+    //'fixed' => 'top',
     'fluid' => true,
     'collapse' => true,
     'items' => SiteMenu::topMenu(),
@@ -47,13 +47,13 @@ if ($this->menu) {
     ));
 }
 
-echo user()->multiFlash();
+echo Yii::app()->user->multiFlash();
 echo $content;
 echo '</div>';
 
 echo '<footer class="footer">';
 echo '<div class="container-fluid">';
-$this->renderPartial('/audit/_footer');
+$this->renderPartial('audit.views.request._footer');
 echo '<p class="pull-right">' . l(t('Back to Top') . ' &uarr;', '#') . '</p>';
 echo '</div>';
 echo '</footer>';
