@@ -23,7 +23,7 @@ $config = Config::createInstance();
 /**
  * Setup the autoloader.
  */
-require_once(APP_PATH . DS . 'globals.php');
+require_once(VENDOR_PATH . DS . 'autoload.php');
 
 /**
  * Run the Yii app (Yii-Haw!)
