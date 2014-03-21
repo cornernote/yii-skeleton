@@ -22,6 +22,8 @@
     $this->widget('dressing.widgets.YdModal');
     $this->widget('dressing.widgets.YdFancyBox');
     $this->widget('dressing.widgets.YdQTip');
+    // bootstrap styles
+    Yii::app()->bootstrap->register();
     // dressing styles
     $cs = Yii::app()->clientScript;
     $cs->registerCSSFile(Yii::app()->dressing->getAssetsUrl() . '/css/yii-dressing.css');
