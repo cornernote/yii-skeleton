@@ -15,7 +15,7 @@
 if ($this->showNavBar) {
     $this->widget('dressing.widgets.YdNavbar', array(
         'id' => 'navbar',
-        'fixed' => 'top',
+        //'fixed' => 'top',
         //'fluid' => true,
         'collapse' => true,
         'items' => SiteMenu::topMenu(),
