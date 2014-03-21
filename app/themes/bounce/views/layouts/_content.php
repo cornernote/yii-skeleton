@@ -195,7 +195,7 @@ if ($this->showNavBar) {
                     <div class="span12">
                         <p><?php echo '&copy; ' . date('Y') . ' ' . app()->name; ?>
 
-                            <?php $this->renderPartial('dressing.views.audit._footer'); ?>
+                            <?php $this->renderPartial('dressing.views.audit.__footer'); ?>
                             <span id="totop" class="pull-right"><a href="#">Back to Top
                                     <i class="icon-arrow-up"></i></a></span>
                         </p>
