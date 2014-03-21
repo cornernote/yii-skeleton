@@ -165,7 +165,7 @@
                 <div class="inner">
                     <div class="container">
                         <?php
-                        $this->renderPartial('audit.views.request._footer');
+                        $this->renderPartial('audit.views.request.__footer');
                         echo '<p class="pull-right">' . l(t('Back to Top') . ' &uarr;', '#') . '</p>';
                         ?>
                     </div>
