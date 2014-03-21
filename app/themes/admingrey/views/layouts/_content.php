@@ -1,7 +1,7 @@
 <?php
 /**
- * @var $this YdWebController
- * @var $content
+ * @var $this WebController
+ * @var $content string
  *
  * @author Brett O'Donnell <cornernote@gmail.com>
  * @author Zain Ul abidin <zainengineer@gmail.com>
@@ -15,9 +15,9 @@ $this->widget('widgets.Navbar', array(
     'fixed' => 'top',
     'fluid' => true,
     'collapse' => true,
-    'items' => YdSiteMenu::topMenu(),
+    'items' => SiteMenu::topMenu(),
     'constantItems' => array(
-        YdSiteMenu::userMenu(),
+        SiteMenu::userMenu(),
     ),
 ));
 
