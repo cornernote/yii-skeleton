@@ -95,7 +95,7 @@ function cs()
 /**
  * Shortcut to Yii::app()->user
  *
- * @return CWebUser
+ * @return AccountWebUser
  */
 function user()
 {
