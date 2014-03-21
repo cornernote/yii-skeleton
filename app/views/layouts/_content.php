@@ -1,12 +1,18 @@
 <?php
 /**
- * @var $this YdWebController
+ * @var $this WebController
  * @var $content string
+ *
+ * @author Brett O'Donnell <cornernote@gmail.com>
+ * @author Zain Ul abidin <zainengineer@gmail.com>
+ * @copyright 2013 Mr PHP
+ * @link https://github.com/cornernote/yii-skeleton
+ * @license BSD-3-Clause https://raw.github.com/cornernote/yii-skeleton/master/license.txt
  */
 
 if ($this->showNavBar) {
     $this->widget('bootstrap.widgets.TbNavbar', array(
-        'fixed' => 'top',
+        //'fixed' => 'top',
         'fluid' => true,
         'collapse' => true,
         'items' => SiteMenu::topMenu(),
@@ -47,7 +53,7 @@ if ($this->showNavBar) {
 
     <div id="body" class="container-fluid">
         <?php
-        echo user()->multiFlash();
+        echo Yii::app()->user->multiFlash();
         echo $content;
         ?>
     </div>
@@ -59,7 +65,7 @@ if ($this->showNavBar) {
                     <div class="span12">
                         <p><?php echo '&copy; ' . date('Y') . ' ' . app()->name; ?>
 
-                            <?php $this->renderPartial('dressing.views.audit._footer'); ?>
+                            <?php $this->renderPartial('audit.views.request._footer'); ?>
                             <span id="totop" class="pull-right"><a href="#">Back to Top
                                     <i class="icon-arrow-up"></i></a></span>
                         </p>
