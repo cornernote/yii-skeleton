@@ -51,7 +51,7 @@ function app()
 
 /**
  * Shortcut to Yii::app()->db
- * 
+ *
  * @return CDbConnection
  */
 function db()
@@ -256,7 +256,7 @@ function au()
  */
 function sf($field, $model = null)
 {
-    return YdHelper::getSubmittedField($field, $model);
+    return Yii::app()->controller->getSubmittedField($field, $model);
 }
 
 /**
