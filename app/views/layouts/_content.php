@@ -9,7 +9,7 @@ if ($this->showNavBar) {
         'fixed' => 'top',
         'fluid' => true,
         'collapse' => true,
-        'items' => YdSiteMenu::topMenu(),
+        'items' => SiteMenu::topMenu(),
     ));
 }
 ?>
