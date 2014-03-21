@@ -10,6 +10,7 @@
 		"cornernote/yii-return-url": "dev-master",
 		"cornernote/gii-tasty-templates": "dev-master",
 		"crisu83/yiistrap": "dev-master",
+		"fortawesome/font-awesome": "dev-master",
 		"malyshev/yii-debug-toolbar": "dev-master"
 	},
 	"scripts": {
