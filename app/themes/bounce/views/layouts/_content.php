@@ -1,6 +1,6 @@
 <?php
 /**
- * @var $this YdWebController
+ * @var $this WebController
  * @var $content string
  *
  * @author Brett O'Donnell <cornernote@gmail.com>
@@ -18,9 +18,9 @@ if ($this->showNavBar) {
         'fixed' => 'top',
         //'fluid' => true,
         'collapse' => true,
-        'items' => YdSiteMenu::topMenu(),
+        'items' => SiteMenu::topMenu(),
         'constantItems' => array(
-            YdSiteMenu::userMenu(),
+            SiteMenu::userMenu(),
         ),
     ));
 }
@@ -28,7 +28,7 @@ if ($this->showNavBar) {
 
 <div id="holder" class="content">
     <header>
-        <?php if (YdHelper::isFrontPage()) { ?>
+        <?php if (YdHelper::isHomePage()) { ?>
             <div id="landing">
                 <div class="container">
                     <div class="row-fluid">
@@ -36,7 +36,7 @@ if ($this->showNavBar) {
                             <h1><?php echo $this->pageIcon ? '<i class="' . $this->pageIcon . '"></i> ' : ''; ?><?php echo $this->pageHeading; ?></h1>
                             <br/>
 
-                            <?php echo nl2br(t(YdConfig::setting('mission'))); ?>
+                            <?php echo nl2br(t(YdSetting::item('mission'))); ?>
                             <br/><br/>
 
                             <div class="buttons">
@@ -49,9 +49,9 @@ if ($this->showNavBar) {
                         </div>
                         <div class="span4">
                             <?php
-                            $img = i(bu() . '/img/landing_video.png', t(YdConfig::setting('landingYoutubeTitle')));
+                            $img = i(bu() . '/img/landing_video.png', t(YdSetting::item('landingYoutubeTitle')));
                             if (YdHelper::isMobileBrowser()) {
-                                echo l($img, 'http://youtu.be/' . YdConfig::setting('landingYoutube'), array(
+                                echo l($img, 'http://youtu.be/' . YdSetting::item('landingYoutube'), array(
                                     'class' => 'thumbnail',
                                 ));
                             }
@@ -70,11 +70,11 @@ if ($this->showNavBar) {
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                                                 onclick="youtubePlayer('pauseVideo');">×
                                         </button>
-                                        <h3 id="myModalLabel"><?php echo t(YdConfig::setting('landingYoutubeTitle')) . '</small>'; ?></h3>
+                                        <h3 id="myModalLabel"><?php echo t(YdSetting::item('landingYoutubeTitle')) . '</small>'; ?></h3>
                                     </div>
                                     <div class="modal-body">
                                         <iframe id="youtubeFrame" class="video" width="560" height="345"
-                                                src="http://www.youtube.com/embed/<?php echo YdConfig::setting('landingYoutube'); ?>?enablejsapi=1"
+                                                src="http://www.youtube.com/embed/<?php echo YdSetting::item('landingYoutube'); ?>?enablejsapi=1"
                                                 frameborder="0" class="pull-right" webkitAllowFullScreen
                                                 mozallowfullscreen allowFullScreen></iframe>
                                     </div>
@@ -134,7 +134,7 @@ if ($this->showNavBar) {
                 'separator' => '<i class="icon-chevron-right"></i>',
             ));
         }
-        echo user()->multiFlash();
+        echo Yii::app()->user->multiFlash();
         echo $content;
         ?>
     </div>
@@ -146,17 +146,17 @@ if ($this->showNavBar) {
                     <h3>Quick Links</h3>
                     <?php
                     $this->widget('zii.widgets.CMenu', array(
-                        'items' => YdSiteMenu::getItemsFromMenu('Main'),
+                        'items' => SiteMenu::getItemsFromMenu(SiteMenu::MENU_MAIN),
                         'htmlOptions' => array(
                             'id' => 'menu',
                         ),
                     ));
-                    $this->widget('zii.widgets.CMenu', array(
-                        'items' => YdSiteMenu::getItemsFromMenu('Help'),
-                        'htmlOptions' => array(
-                            'id' => 'menu',
-                        ),
-                    ));
+                    //$this->widget('zii.widgets.CMenu', array(
+                    //    'items' => SiteMenu::getItemsFromMenu(SiteMenu::MENU_HELP),
+                    //    'htmlOptions' => array(
+                    //        'id' => 'menu',
+                    //    ),
+                    //));
                     ?>
                 </div>
                 <div class="span3">
