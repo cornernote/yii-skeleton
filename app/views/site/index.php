@@ -22,7 +22,7 @@ if (!YdHelper::tableExists('migration')) {
 }
 
 echo '<div class="row-fluid" id="home-menu">';
-$menus = SiteMenu::getItemsFromMenu('Main');
+$menus = SiteMenu::getItemsFromMenu(SiteMenu::MENU_MAIN);
 foreach ($menus as $menu) {
     if (empty($menu['items']))
         continue;
