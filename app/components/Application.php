@@ -15,7 +15,7 @@
  * @property YdDressing $dressing
  * @property CClientScript $clientScript
  * @property EReturnUrl $returnUrl
- * @property CWebUser $user
+ * @property AccountWebUser $user
  *
  * @method CClientScript getClientScript() getClientScript()
  *
