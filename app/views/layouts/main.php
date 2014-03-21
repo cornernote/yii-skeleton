@@ -23,8 +23,8 @@
     $this->widget('dressing.widgets.YdFancyBox');
     $this->widget('dressing.widgets.YdQTip');
     // dressing styles
-    $cs = $app->clientScript;
-    $cs->registerCSSFile($app->dressing->getAssetsUrl() . '/css/yii-dressing.css');
+    $cs = Yii::app()->clientScript;
+    $cs->registerCSSFile(Yii::app()->dressing->getAssetsUrl() . '/css/yii-dressing.css');
     // app style/script
     $cs->registerCSSFile(au() . '/css/app.css', 'screen, projection');
     $cs->registerScriptFile(au() . '/js/app.js');
