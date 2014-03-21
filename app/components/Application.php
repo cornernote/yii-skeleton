@@ -16,6 +16,7 @@
  * @property CClientScript $clientScript
  * @property EReturnUrl $returnUrl
  * @property AccountWebUser $user
+ * @property WebController $controller
  *
  * @method CClientScript getClientScript() getClientScript()
  *
