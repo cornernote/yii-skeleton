@@ -15,7 +15,7 @@
     <?php
     $this->widget('widgets.Navbar', array(
         'id' => 'navbar',
-        'fixed' => 'top',
+        //'fixed' => 'top',
         //'fluid' => true,
         'collapse' => true,
         'items' => SiteMenu::topMenu(),
@@ -59,7 +59,7 @@
                     'links' => $this->breadcrumbs,
                 ));
             }
-            echo user()->multiFlash();
+            echo Yii::app()->user->multiFlash();
             echo $content;
             ?>
         </div>
@@ -165,6 +165,7 @@
                 <div class="inner">
                     <div class="container">
                         <?php
+                        $this->renderPartial('audit.views.request._footer');
                         echo '<p class="pull-right">' . l(t('Back to Top') . ' &uarr;', '#') . '</p>';
                         ?>
                     </div>
