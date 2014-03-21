@@ -30,7 +30,7 @@ class WebController extends Controller
     /**
      * @var string the default layout for the controller view.
      */
-    public $layout = 'dressing.views.layouts.default';
+    public $layout = 'application.views.layouts.default';
 
     /**
      * @return array
