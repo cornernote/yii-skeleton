@@ -62,7 +62,7 @@ echo '</div>';
 
 echo '<footer class="footer">';
 echo '<div class="container-fluid">';
-$this->renderPartial('audit.views.request._footer');
+$this->renderPartial('audit.views.request.__footer');
 echo '<p class="pull-right">' . l(t('Back to Top') . ' &uarr;', '#') . '</p>';
 echo '</div>';
 echo '</footer>';
