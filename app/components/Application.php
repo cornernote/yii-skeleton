@@ -17,7 +17,8 @@
  * @property EReturnUrl $returnUrl
  * @property AccountWebUser $user
  * @property WebController $controller
- *
+ * @property TbApi $bootstrap
+ * 
  * @method CClientScript getClientScript() getClientScript()
  *
  * @author Brett O'Donnell <cornernote@gmail.com>
