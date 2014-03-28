@@ -154,10 +154,10 @@ return array(
         'user' => array(
             'class' => 'account.components.AccountWebUser',
             'allowAutoLogin' => true,
-            'loginUrl' => array('/account/login'),
+            'loginUrl' => array('/login'),
             'behaviors' => array(
-                'webUserFlash' => array(
-                    'class' => 'dressing.behaviors.YdWebUserFlashBehavior',
+                'accountWebUser' => array(
+                    'class' => 'account.components.AccountWebUserBehavior',
                 ),
             ),
         ),
