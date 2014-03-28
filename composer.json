@@ -9,6 +9,7 @@
 		"cornernote/yii-menu-module": "dev-master",
 		"cornernote/yii-return-url": "dev-master",
 		"cornernote/gii-tasty-templates": "dev-master",
+		"cornernote/gii-modeldoc-generator": "dev-master",
 		"crisu83/yiistrap": "dev-master",
 		"fortawesome/font-awesome": "dev-master",
 		"malyshev/yii-debug-toolbar": "dev-master",
