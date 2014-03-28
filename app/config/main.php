@@ -236,8 +236,7 @@ return array(
             'class' => 'system.gii.GiiModule',
             'generatorPaths' => array(
                 'vendor.cornernote.gii-tasty-templates.tasty',
-                'vendor.cornernote.gii-modeldoc-generator',
-                'vendor.cornernote.gii-prefixmodel-generator',
+                'vendor.cornernote.gii-modeldoc-generator.gii',
                 'bootstrap.gii',
             ),
             'password' => YII_DEBUG ? false : null,
