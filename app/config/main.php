@@ -136,9 +136,6 @@ return array(
                 ),
             ),
         ),
-        'reCapture' => array(
-            'class' => 'dressing.components.YdReCapture',
-        ),
         'returnUrl' => array(
             'class' => 'vendor.cornernote.yii-return-url.return-url.components.EReturnUrl',
         ),
