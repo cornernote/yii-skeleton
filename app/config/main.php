@@ -112,7 +112,7 @@ return array(
             'class' => 'dressing.YdDressing',
         ),
         'emailManager' => array(
-            'class' => 'email.components.EmailManager',
+            'class' => 'EmailManager',
         ),
         'errorHandler' => array(
             'class' => 'audit.components.AuditErrorHandler',
