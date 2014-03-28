@@ -16,6 +16,7 @@
  * @property CClientScript $clientScript
  * @property EReturnUrl $returnUrl
  * @property ETokenManager $tokenManager
+ * @property EmailManager $emailManager
  * @property AccountWebUser $user
  * @property WebController $controller
  * @property TbApi $bootstrap
