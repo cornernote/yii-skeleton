@@ -21,6 +21,11 @@ require_once(dirname(__FILE__) . '/config.php');
 $config = Config::createInstance();
 
 /**
+ * Setup the autoloader.
+ */
+require_once(VENDOR_PATH . DS . 'autoload.php');
+
+/**
  * run the Yii app (Yii-Haw!)
  */
 require_once(APP_PATH . DS . 'globals.php');
