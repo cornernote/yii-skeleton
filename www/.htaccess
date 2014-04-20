@@ -36,7 +36,11 @@ AddDefaultCharset UTF-8
 	ExpiresByType text/javascript "access plus 1 day"
 	ExpiresByType application/javascript "access plus 1 day"
 	ExpiresByType application/x-javascript "access plus 1 day"
-    <FilesMatch "\.(jpe?g|png|gif|js|css|woff)$">
+    <FilesMatch "\.(jpe?g|png|gif|js|css|eot|ttf|otf|woff)$">
         ExpiresDefault "access plus 1 day"
     </FilesMatch>
 </IfModule>
+
+<FilesMatch ".(eot|ttf|otf|woff)">
+    Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
