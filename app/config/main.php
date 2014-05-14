@@ -72,6 +72,14 @@ return array(
             'baseUrl' => WWW_URL . '/assets',
             'linkAssets' => true,
         ),
+        'authManager' => array(
+            'class' => 'CDbAuthManager',
+            'defaultRoles' => array('authenticated'),
+            'connectionID' => 'db',
+            'itemTable' => 'auth_item',
+            'itemChildTable' => 'auth_item_child',
+            'assignmentTable' => 'auth_assignment',
+        ),
         'bootstrap' => array(
             'class' => 'bootstrap.components.TbApi',
         ),
