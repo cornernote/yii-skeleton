@@ -1,22 +1,9 @@
 <?php
+
 /**
  * WebController
  * 
- * @see YdWebControllerBehavior
- * @property string $name
- * @property array $menu
- * @property array $breadcrumbs
- * @property string $pageHeading
- * @property string $pageSubheading
- * @property string $pageIcon
- * @property bool $showNavBar
- * @property bool $isModal
- * @method performValidation() bool performValidation(CActiveRecord|CActiveRecord[] $model)
- * @method performAjaxValidation() void performAjaxValidation(CActiveRecord|CActiveRecord[] $model, string $form)
- * @method loadModel() CActiveRecord loadModel(mixed $id, bool|string $model)
- * @method flashRedirect() void flashRedirect(string $message, string $messageType = 'info', mixed $url)
- * @method addBreadcrumb() void addBreadcrumb(string $name, string|array $link = null)
- * @method getName() string getName(bool $plural = false)
+ * @mixin YdWebControllerBehavior
  *
  * @author Brett O'Donnell <cornernote@gmail.com>
  * @author Zain Ul abidin <zainengineer@gmail.com>
@@ -32,6 +19,16 @@ class WebController extends Controller
      */
     public $layout = 'application.views.layouts.default';
 
+    /**
+     * @return array action filters
+     */
+    public function filters()
+    {
+        return array(
+            'accessControl',
+        );
+    }
+    
     /**
      * @return array
      */
