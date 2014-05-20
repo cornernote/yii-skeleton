@@ -42,10 +42,9 @@ return array(
 
     // maps
     'controllerMap' => array(
-        'account' => 'dressing.controllers.YdAccountController',
-        'attachment' => 'dressing.controllers.YdAttachmentController',
-        'lookup' => 'dressing.controllers.YdLookupController',
-        'setting' => 'dressing.controllers.YdSettingController',
+        //'attachment' => 'dressing.controllers.YdAttachmentController',
+        //'lookup' => 'dressing.controllers.YdLookupController',
+        //'setting' => 'dressing.controllers.YdSettingController',
     ),
     'commandMap' => array(
         'migrate' => array(
@@ -96,6 +95,7 @@ return array(
         ),
         'cacheApc' => array(
             'class' => 'CApcCache',
+            'keyPrefix' => vd($app['id'], 'app') . '.',
         ),
         'cacheDb' => array(
             'class' => 'CDbCache',
@@ -158,6 +158,13 @@ return array(
         'urlManager' => array(
             'urlFormat' => isset($_GET['r']) ? 'get' : 'path', // allow filters in audit/index work
             'showScriptName' => false,
+            'rules' => array(
+                // account
+                '<action:(login|logout|signup)>' => '/account/user/<action>',
+                'account/<action:(changePassword|activate|update|lostPassword|resetPassword)>' => '/account/user/<action>',
+                'account/resendActivation/*' => '/account/user/resendActivation',
+                'account' => '/account/user/view',
+            ),
         ),
         'user' => array(
             'class' => 'account.components.AccountWebUser',
@@ -236,6 +243,7 @@ return array(
             //'autoCreateTables' => false,
             'adminUsers' => array('admin'),
             'connectionID' => 'db',
+            'cacheID' => 'cache',
         ),
         'gii' => array(
             'class' => 'system.gii.GiiModule',
