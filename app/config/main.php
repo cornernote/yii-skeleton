@@ -127,6 +127,19 @@ return array(
             'trackAllRequests' => true,
             'errorAction' => 'site/error',
         ),
+        'gearmanWorker' => array(
+            'class' => 'EGearmanWorker',
+            'servers' => array('127.0.0.1'),
+        ),
+        'gearmanRouter' => array(
+            'class' => 'EGearmanRouter',
+            // defines the controller and action to use for each of your jobs
+            'routes' => array(
+               //'reverse' => 'application.handlers.default',
+               //'myreverse' => array('StringHandler', 'reverse'),
+               //'var_dump' => new EGearmanRoute('var_dump', 'contoller', 'action'),
+            ),
+        ),
         'log' => array(
             'class' => 'CLogRouter',
             'routes' => array(
