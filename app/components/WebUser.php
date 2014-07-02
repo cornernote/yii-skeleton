@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * WebUser
+ * 
  * @mixin AccountWebUserBehavior
  * @property User $user
  */
