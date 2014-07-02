@@ -20,8 +20,8 @@ if ($this->showNavBar) {
 }
 ?>
 
-<div id="holder" class="content">
-    <header>
+<div id="wrapper">
+    <header id="header">
         <?php
         if ($this->pageHeading || $this->breadcrumbs || $this->menu) {
             ?>
@@ -61,19 +61,13 @@ if ($this->showNavBar) {
     </div>
 
     <footer id="footer">
-        <div id="copyright">
-            <div class="container-fluid">
-                <div class="row-fluid">
-                    <div class="span12">
-                        <p><?php echo '&copy; ' . date('Y') . ' ' . app()->name; ?>
+        <div class="container-fluid">
+            <p><?php echo '&copy; ' . date('Y') . ' ' . app()->name; ?>
 
-                            <?php $this->renderPartial('audit.views.request.__footer'); ?>
-                            <span id="totop" class="pull-right"><a href="#">Back to Top
-                                    <i class="icon-arrow-up"></i></a></span>
-                        </p>
-                    </div>
-                </div>
-            </div>
+                <?php $this->renderPartial('audit.views.request.__footer'); ?>
+                <span id="totop" class="pull-right"><a href="#">Back to Top
+                        <i class="icon-arrow-up"></i></a></span>
+            </p>
         </div>
     </footer>
 
