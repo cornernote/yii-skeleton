@@ -53,7 +53,7 @@ if ($this->showNavBar) {
         ?>
     </header>
 
-    <div id="body" class="container-fluid">
+    <div id="content" class="container-fluid">
         <?php
         echo Yii::app()->user->multiFlash();
         echo $content;
