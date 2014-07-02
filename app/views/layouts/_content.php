@@ -15,6 +15,7 @@ if ($this->showNavBar) {
 ?>
 
 <div id="wrapper">
+
     <header id="header">
         <?php
         if ($this->pageHeading || $this->breadcrumbs || $this->menu) {
