@@ -21,37 +21,35 @@ if ($this->showNavBar) {
 ?>
 
 <div id="wrapper">
-    <header id="header">
-        <?php
-        if ($this->pageHeading || $this->breadcrumbs || $this->menu) {
-            ?>
-            <div id="header">
-                <div class="container-fluid">
-                    <?php
-                    if ($this->pageHeading) {
-                        echo '<h1>' . ($this->pageIcon ? '<i class="' . $this->pageIcon . '"></i> ' : '') . $this->pageHeading . '</h1>';
-                    }
-                    if ($this->breadcrumbs) {
-                        $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
-                            'links' => CMap::mergeArray($this->breadcrumbs, array($this->pageHeading)),
-                            'separator' => '<i class="icon-chevron-right"></i>',
-                            //'htmlOptions' => array('class' => 'pull-right'),
-                        ));
-                    }
-                    if ($this->menu) {
-                        $this->widget('bootstrap.widgets.TbMenu', array(
-                            'id' => 'menu',
-                            'type' => 'tabs',
-                            'items' => $this->menu,
-                        ));
-                    }
-                    ?>
-                </div>
-            </div>
-        <?php
-        }
+    <?php
+    if ($this->pageHeading || $this->breadcrumbs || $this->menu) {
         ?>
-    </header>
+        <header id="header">
+            <div class="container-fluid">
+                <?php
+                if ($this->pageHeading) {
+                    echo '<h1>' . ($this->pageIcon ? '<i class="' . $this->pageIcon . '"></i> ' : '') . $this->pageHeading . '</h1>';
+                }
+                if ($this->breadcrumbs) {
+                    $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+                        'links' => CMap::mergeArray($this->breadcrumbs, array($this->pageHeading)),
+                        'separator' => '<i class="icon-chevron-right"></i>',
+                        //'htmlOptions' => array('class' => 'pull-right'),
+                    ));
+                }
+                if ($this->menu) {
+                    $this->widget('bootstrap.widgets.TbMenu', array(
+                        'id' => 'menu',
+                        'type' => 'tabs',
+                        'items' => $this->menu,
+                    ));
+                }
+                ?>
+            </div>
+        </header>
+    <?php
+    }
+    ?>
 
     <div id="content" class="container-fluid">
         <?php
