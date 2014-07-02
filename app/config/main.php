@@ -4,7 +4,6 @@
  *
  * At this point in the runtime all constants have been defined and the environment has been configured.
  */
-$app = Config::instance()->getValue('app');
 $db = vd(Config::instance()->getValue('db'), array(
     'host' => 'localhost',
     'name' => 'test',
@@ -14,11 +13,11 @@ $db = vd(Config::instance()->getValue('db'), array(
 return array(
 
     // yii settings
-    'id' => vd($app['id'], 'app'),
-    'name' => vd($app['name'], 'App'),
-    'language' => vd($app['language'], 'en'),
-    'theme' => vd($app['theme']),
-    'params' => vd($app['params'], array()),
+    'id' => 'app',
+    'name' => 'App',
+    'language' => 'en',
+    'theme' => null,
+    'params' => array(),
 
     // paths
     'basePath' => APP_PATH,
@@ -84,7 +83,7 @@ return array(
         ),
         'cache' => array(
             'class' => 'CMemCache',
-            'keyPrefix' => vd($app['id'], 'app') . '.',
+            'keyPrefix' => 'app.',
             'servers' => array(
                 array(
                     'host' => '127.0.0.1',
@@ -95,7 +94,7 @@ return array(
         ),
         'cacheApc' => array(
             'class' => 'CApcCache',
-            'keyPrefix' => vd($app['id'], 'app') . '.',
+            'keyPrefix' => 'app.',
         ),
         'cacheDb' => array(
             'class' => 'CDbCache',
