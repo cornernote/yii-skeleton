@@ -15,10 +15,10 @@ if ($this->showNavBar) {
 ?>
 
 <div id="wrapper">
-    <?php
-    if ($this->pageHeading || $this->breadcrumbs || $this->menu) {
-        ?>
-        <header id="header">
+    <header id="header">
+        <?php
+        if ($this->pageHeading || $this->breadcrumbs || $this->menu) {
+            ?>
             <div class="container-fluid">
                 <?php
                 if ($this->pageHeading) {
@@ -40,10 +40,10 @@ if ($this->showNavBar) {
                 }
                 ?>
             </div>
-        </header>
-    <?php
-    }
-    ?>
+        <?php
+        }
+        ?>
+    </header>
 
     <div id="content" class="container-fluid">
         <?php
