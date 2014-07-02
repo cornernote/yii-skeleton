@@ -19,18 +19,18 @@
     <?php
     $cs = Yii::app()->clientScript;
 
-    // init widgets
+    // widgets
     $this->widget('dressing.widgets.YdModal');
     $this->widget('dressing.widgets.YdFancyBox');
     $this->widget('dressing.widgets.YdQTip');
 
-    // bootstrap styles
+    // bootstrap
     Yii::app()->bootstrap->register();
 
-    // dressing styles
+    // dressing
     $cs->registerCSSFile(Yii::app()->dressing->getAssetsUrl() . '/css/yii-dressing.css');
 
-    // app style/script
+    // app
     $cs->registerCSSFile(au() . '/css/app.css', 'screen, projection');
     $cs->registerScriptFile(au() . '/js/app.js');
     ?>
