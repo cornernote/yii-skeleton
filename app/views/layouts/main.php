@@ -11,22 +11,25 @@
  * @link https://github.com/cornernote/yii-skeleton
  * @license BSD-3-Clause https://raw.github.com/cornernote/yii-skeleton/master/license.txt
  */
-?>
-<!DOCTYPE html>
-<html lang="en">
+?><!DOCTYPE html>
+<html lang="<?php echo Yii::app()->language; ?>">
 <head>
-    <meta charset="utf-8">
-    <meta name="language" content="en"/>
+    <meta charset="<?php echo Yii::app()->charset; ?>">
+    <meta name="language" content="<?php echo Yii::app()->language; ?>"/>
     <?php
+    $cs = Yii::app()->clientScript;
+
     // init widgets
     $this->widget('dressing.widgets.YdModal');
     $this->widget('dressing.widgets.YdFancyBox');
     $this->widget('dressing.widgets.YdQTip');
+
     // bootstrap styles
     Yii::app()->bootstrap->register();
+
     // dressing styles
-    $cs = Yii::app()->clientScript;
     $cs->registerCSSFile(Yii::app()->dressing->getAssetsUrl() . '/css/yii-dressing.css');
+
     // app style/script
     $cs->registerCSSFile(au() . '/css/app.css', 'screen, projection');
     $cs->registerScriptFile(au() . '/js/app.js');
