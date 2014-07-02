@@ -27,8 +27,10 @@ if ($this->showNavBar) {
             ?>
             <div id="header">
                 <div class="container-fluid">
-                    <h1><?php echo $this->pageIcon ? '<i class="' . $this->pageIcon . '"></i> ' : ''; ?><?php echo $this->pageHeading; ?></h1>
                     <?php
+                    if ($this->pageHeading) {
+                        echo '<h1>' . ($this->pageIcon ? '<i class="' . $this->pageIcon . '"></i> ' : '') . $this->pageHeading . '</h1>';
+                    }
                     if ($this->breadcrumbs) {
                         $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
                             'links' => CMap::mergeArray($this->breadcrumbs, array($this->pageHeading)),
