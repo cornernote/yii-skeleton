@@ -173,10 +173,10 @@ return array(
             'showScriptName' => false,
             'rules' => array(
                 // account
-                '<action:(login|logout|signup)>' => '/account/user/<action>',
-                'account/<action:(changePassword|activate|update|lostPassword|resetPassword)>' => '/account/user/<action>',
-                'account/resendActivation/*' => '/account/user/resendActivation',
-                'account' => '/account/user/view',
+                '<action:(login|logout|signup)>/*' => '/site/<action>',
+                'account/<action:(changePassword|activate|lostPassword|resetPassword|resendActivation)>/*' => '/site/<action>',
+                'account/update' => '/site/updateAccount',
+                'account' => '/site/account',
             ),
         ),
         'user' => array(
