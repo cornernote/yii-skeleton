@@ -4,7 +4,7 @@
  * @var $content string
  */
 
-if ($this->showNavBar) {
+if (!empty($this->showNavBar)) {
     $this->widget('bootstrap.widgets.TbNavbar', array(
         //'fixed' => 'top',
         'fluid' => true,
@@ -18,21 +18,21 @@ if ($this->showNavBar) {
 
     <header id="header">
         <?php
-        if ($this->pageHeading || $this->breadcrumbs || $this->menu) {
+        if (!empty($this->pageHeading) || !empty($this->breadcrumbs) || !empty($this->menu)) {
             ?>
             <div class="container-fluid">
                 <?php
-                if ($this->pageHeading) {
+                if (!empty($this->pageHeading)) {
                     echo '<h1>' . ($this->pageIcon ? '<i class="' . $this->pageIcon . '"></i> ' : '') . $this->pageHeading . '</h1>';
                 }
-                if ($this->breadcrumbs) {
+                if (!empty($this->breadcrumbs)) {
                     $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
                         'links' => CMap::mergeArray($this->breadcrumbs, array($this->pageHeading)),
                         'separator' => '<i class="icon-chevron-right"></i>',
                         //'htmlOptions' => array('class' => 'pull-right'),
                     ));
                 }
-                if ($this->menu) {
+                if (!empty($this->menu)) {
                     $this->widget('bootstrap.widgets.TbMenu', array(
                         'id' => 'menu',
                         'type' => 'tabs',
