@@ -23,7 +23,7 @@ if (!empty($this->showNavBar)) {
             <div class="container-fluid">
                 <?php
                 if (!empty($this->pageHeading)) {
-                    echo '<h1>' . ($this->pageIcon ? '<i class="' . $this->pageIcon . '"></i> ' : '') . $this->pageHeading . '</h1>';
+                    echo '<h1>' . (!empty($this->pageIcon) ? '<i class="fa fa-' . $this->pageIcon . '"></i> ' : '') . $this->pageHeading . '</h1>';
                 }
                 if (!empty($this->breadcrumbs)) {
                     $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
