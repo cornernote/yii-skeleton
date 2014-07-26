@@ -8,13 +8,13 @@
 		"cornernote/yii-email-module": "dev-master",
 		"cornernote/yii-menu-module": "dev-master",
 		"cornernote/yii-return-url": "dev-master",
+		"cornernote/yii-extended-date-time-formatting-behavior": "dev-master"
 		"cornernote/gii-tasty-templates": "dev-master",
 		"cornernote/gii-modeldoc-generator": "dev-master",
 		"crisu83/yiistrap": "dev-master",
 		"fortawesome/font-awesome": "dev-master",
 		"malyshev/yii-debug-toolbar": "dev-master",
 		"svyatov/yii-shortcut": "dev-master",
-		"wapmorgan/yii-extended-date-time-formatting-behavior": "dev-master"
 	},
 	"scripts": {
 		"post-install-cmd": [
