@@ -238,7 +238,7 @@ return array(
             'useAccountUserController' => false,
             'layout' => 'application.views.layouts.default',
             'userClass' => 'User',
-            'userIdentityClass' => 'UserIdentity',
+            //'userIdentityClass' => 'UserIdentity',
         ),
         'audit' => array(
             'class' => 'audit.AuditModule',
