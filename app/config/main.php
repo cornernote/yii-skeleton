@@ -235,7 +235,7 @@ return array(
     'modules' => array(
         'account' => array(
             'class' => 'account.AccountModule',
-            //'useAccountUserController' => false,
+            'useAccountUserController' => false,
             'layout' => 'application.views.layouts.default',
             'userClass' => 'User',
             //'userIdentityClass' => 'UserIdentity',
