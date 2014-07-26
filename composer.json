@@ -1,7 +1,7 @@
 {
 	"minimum-stability": "dev",
 	"require": {
-		"yiisoft/yii": "1.1.14",
+		"yiisoft/yii": "1.1.15",
 		"cornernote/yii-dressing": "dev-master",
 		"cornernote/yii-audit-module": "dev-master",
 		"cornernote/yii-account-module": "dev-master",
