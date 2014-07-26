@@ -30,7 +30,7 @@ class SiteMenu
 
         $menuItem = MenuItem::model()->findByPk($id);
         if (!$menuItem)
-            throw new CException('No MenuItem with ID=' . $id);
+            return array();
         $items = $menuItem->getItems($depthLimit);
         Yii::app()->cache->set($cacheKey, $items);
         return $items;
