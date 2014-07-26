@@ -4,7 +4,8 @@
  *
  * At this point in the runtime all constants have been defined and the environment has been configured.
  */
-$db = vd(Config::instance()->getValue('db'), array(
+$db = Config::instance()->getValue('db');
+$db = vd($db, array(
     'host' => 'localhost',
     'name' => 'test',
     'user' => 'root',
@@ -265,6 +266,7 @@ return array(
                 'bootstrap.gii',
             ),
             'password' => YII_DEBUG ? false : null,
+            'ipFilters' => YII_DEBUG ? array('*') : null,
         ),
     ),
     
