@@ -178,7 +178,7 @@ return array(
             ),
         ),
         'user' => array(
-            'class' => 'account.components.AccountWebUser',
+            'class' => 'WebUser',
             'allowAutoLogin' => true,
             'loginUrl' => array('/login'),
             'behaviors' => array(
