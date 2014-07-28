@@ -3,7 +3,7 @@
 /**
  * SiteController
  */
-class SiteController extends YdWebController
+class SiteController extends WebController
 {
 
     /**
