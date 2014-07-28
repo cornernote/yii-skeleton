@@ -42,6 +42,7 @@ return array(
 
     // maps
     'controllerMap' => array(
+        'account' => 'application.controllers.AccountController',
         //'attachment' => 'dressing.controllers.YdAttachmentController',
         //'lookup' => 'dressing.controllers.YdLookupController',
         //'setting' => 'dressing.controllers.YdSettingController',
