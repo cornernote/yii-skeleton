@@ -26,9 +26,9 @@ if (!empty($this->showNavBar)) {
                     echo '<h1>' . (!empty($this->pageIcon) ? '<i class="fa fa-' . $this->pageIcon . '"></i> ' : '') . $this->pageHeading . '</h1>';
                 }
                 if (!empty($this->breadcrumbs)) {
-                    $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+                    $this->widget('bootstrap.widgets.TbBreadcrumb', array(
                         'links' => CMap::mergeArray($this->breadcrumbs, array($this->pageHeading)),
-                        'separator' => '<i class="icon-chevron-right"></i>',
+                        'divider' => '<i class="icon-chevron-right"></i>',
                         //'htmlOptions' => array('class' => 'pull-right'),
                     ));
                 }
