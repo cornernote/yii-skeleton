@@ -15,11 +15,11 @@ class AccountController extends WebController
     {
         return array(
             array('allow',
-                'actions' => array('login', 'logout', 'lostPassword', 'resetPassword', 'signUp', 'activate', 'resendActivation', 'hybridAuth'),
-                'users' => array('*'),
+                'actions' => array('login', 'lostPassword', 'resetPassword', 'signUp', 'activate', 'resendActivation', 'hybridAuth'),
+                'users' => array('?'),
             ),
             array('allow',
-                'actions' => array('view', 'update', 'changePassword'),
+                'actions' => array('index', 'logout', 'update', 'changePassword'),
                 'users' => array('@'),
             ),
             array('deny',
