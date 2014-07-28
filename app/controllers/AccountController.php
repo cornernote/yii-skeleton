@@ -15,7 +15,7 @@ class AccountController extends WebController
     {
         return array(
             array('allow',
-                'actions' => array('login', 'lostPassword', 'resetPassword', 'signUp', 'activate', 'resendActivation', 'hybridAuth'),
+                'actions' => array('login', 'lostPassword', 'resetPassword', 'signup', 'activate', 'resendActivation', 'hybridAuth'),
                 'users' => array('?'),
             ),
             array('allow',
@@ -35,7 +35,7 @@ class AccountController extends WebController
     public function actions()
     {
         return array(
-            'signUp' => array(
+            'signup' => array(
                 'class' => 'account.actions.AccountSignUpAction',
             ),
             'activate' => array(
