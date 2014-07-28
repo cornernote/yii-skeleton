@@ -29,6 +29,7 @@ if (!empty($this->showNavBar)) {
                     $this->widget('bootstrap.widgets.TbBreadcrumb', array(
                         'links' => CMap::mergeArray($this->breadcrumbs, array($this->pageHeading)),
                         'divider' => '<i class="fa fa-chevron-right"></i>',
+                        'homeLabel' => '<i class="fa fa-home"></i>',
                         //'htmlOptions' => array('class' => 'pull-right'),
                     ));
                 }
