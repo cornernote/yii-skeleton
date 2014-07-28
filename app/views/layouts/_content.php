@@ -33,9 +33,9 @@ if (!empty($this->showNavBar)) {
                     ));
                 }
                 if (!empty($this->menu)) {
-                    $this->widget('bootstrap.widgets.TbMenu', array(
+                    $this->widget('bootstrap.widgets.TbNav', array(
                         'id' => 'menu',
-                        'type' => 'tabs',
+                        'type' => TbHtml::NAV_TYPE_TABS,
                         'items' => $this->menu,
                     ));
                 }
