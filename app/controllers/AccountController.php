@@ -19,7 +19,7 @@ class AccountController extends WebController
                 'users' => array('?'),
             ),
             array('allow',
-                'actions' => array('index', 'logout', 'update', 'changePassword'),
+                'actions' => array('index', 'logout', 'update', 'password'),
                 'users' => array('@'),
             ),
             array('deny',
@@ -62,7 +62,7 @@ class AccountController extends WebController
             'update' => array(
                 'class' => 'account.actions.AccountUpdateAction',
             ),
-            'changePassword' => array(
+            'password' => array(
                 'class' => 'account.actions.AccountChangePasswordAction',
             ),
             'hybridAuth' => array(
