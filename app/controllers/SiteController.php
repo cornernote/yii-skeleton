@@ -15,12 +15,8 @@ class SiteController extends WebController
     {
         return array(
             array('allow',
-                'actions' => array('index', 'page', 'error', 'login', 'logout', 'lostPassword', 'resetPassword', 'signUp', 'activate', 'resendActivation', 'hybridAuth'),
+                'actions' => array('index', 'page', 'error'),
                 'users' => array('*'),
-            ),
-            array('allow',
-                'actions' => array('overview', 'account', 'updateAccount', 'changePassword'),
-                'users' => array('@'),
             ),
             array('allow',
                 'actions' => array('clearCache'),
@@ -47,40 +43,6 @@ class SiteController extends WebController
             // They can be accessed via: index.php?r=site/page&view=FileName
             'page' => array(
                 'class' => 'CViewAction',
-            ),
-            // account actions
-            'signUp' => array(
-                'class' => 'account.actions.AccountSignUpAction',
-            ),
-            'activate' => array(
-                'class' => 'account.actions.AccountActivateAction',
-            ),
-            'resendActivation' => array(
-                'class' => 'account.actions.AccountResendActivationAction',
-            ),
-            'lostPassword' => array(
-                'class' => 'account.actions.AccountLostPasswordAction',
-            ),
-            'resetPassword' => array(
-                'class' => 'account.actions.AccountResetPasswordAction',
-            ),
-            'login' => array(
-                'class' => 'account.actions.AccountLoginAction',
-            ),
-            'logout' => array(
-                'class' => 'account.actions.AccountLogoutAction',
-            ),
-            'account' => array(
-                'class' => 'account.actions.AccountViewAction',
-            ),
-            'updateAccount' => array(
-                'class' => 'account.actions.AccountUpdateAction',
-            ),
-            'changePassword' => array(
-                'class' => 'account.actions.AccountChangePasswordAction',
-            ),
-            'hybridAuth' => array(
-                'class' => 'account.actions.AccountHybridAuthAction',
             ),
         );
     }
