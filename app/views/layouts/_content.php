@@ -60,7 +60,7 @@ if (!empty($this->showNavBar)) {
 
                 <?php $this->renderPartial('audit.views.request.__footer'); ?>
                 <span id="totop" class="pull-right"><a href="#">Back to Top
-                        <i class="icon-arrow-up"></i></a></span>
+                        <i class="fa fa-arrow-up"></i></a></span>
             </p>
         </div>
     </footer>
