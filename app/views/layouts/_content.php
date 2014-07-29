@@ -18,14 +18,12 @@ if (!empty($this->showNavBar)) {
 
     <header id="header">
         <?php
-        if (!empty($this->pageHeading) || !empty($this->breadcrumbs) || !empty($this->menu)) {
+        if (!empty($this->pageHeading) || !empty($this->menu)) {
             ?>
             <div class="container-fluid">
                 <?php
                 if (!empty($this->pageHeading)) {
                     echo '<h1>' . (!empty($this->pageIcon) ? '<i class="' . $this->pageIcon . '"></i> ' : '') . $this->pageHeading . '</h1>';
-                }
-                if (!empty($this->breadcrumbs)) {
                     $this->widget('bootstrap.widgets.TbBreadcrumb', array(
                         'links' => CMap::mergeArray($this->breadcrumbs, array($this->pageHeading)),
                         'divider' => '<i class="fa fa-chevron-right"></i>',
