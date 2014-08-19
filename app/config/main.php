@@ -184,7 +184,7 @@ return array(
         'user' => array(
             'class' => 'WebUser',
             'allowAutoLogin' => true,
-            'loginUrl' => array('/login'),
+            'loginUrl' => array('/account/login'),
             'behaviors' => array(
                 'accountWebUser' => array(
                     'class' => 'account.components.AccountWebUserBehavior',
