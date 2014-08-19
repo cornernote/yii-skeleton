@@ -169,6 +169,10 @@ return array(
         'themeManager' => array(
             'basePath' => APP_PATH . DS . 'themes',
         ),
+        'tokenManager' => array(
+            'class' => 'vendor.cornernote.yii-token-manager.token-manager.components.ETokenManager',
+            'connectionID' => 'db',
+        ),
         'urlManager' => array(
             'urlFormat' => isset($_GET['r']) ? 'get' : 'path', // allow filters in audit/index work
             'showScriptName' => false,
