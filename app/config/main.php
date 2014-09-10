@@ -24,7 +24,7 @@ return array(
     'basePath' => APP_PATH,
     'runtimePath' => dirname(APP_PATH) . DS . 'runtime',
     'aliases' => array(
-        'public' => WWW_PATH,
+        'www' => WWW_PATH,
         'vendor' => VENDOR_PATH,
         'audit' => VENDOR_PATH . '/cornernote/yii-audit-module/audit',
         'account' => VENDOR_PATH . '/cornernote/yii-account-module/account',
