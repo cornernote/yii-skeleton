@@ -30,7 +30,7 @@
     ?>
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
-<body id="top" class="<?php echo $this->id . '-' . $this->action->id; ?>">
+<body id="top" class="<?php echo  ($this->module ? $this->module->id . '-' : '') . $this->id . '-' . $this->action->id; ?>">
 
 <?php echo $content; ?>
 
