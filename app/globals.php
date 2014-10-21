@@ -284,3 +284,14 @@ function vd(&$value, $default = null)
 {
     return isset($value) ? $value : $default;
 }
+
+/**
+ * @param CDbCriteria $criteria
+ * @param CActiveRecord $model
+ * @return string
+ */
+function criteria_sql($criteria, $model)
+{
+    $command = $model->getCommandBuilder()->createFindCommand($model->getTableSchema(), $criteria, $model->getTableAlias());
+    return $command->getText();
+}
