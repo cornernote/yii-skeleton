@@ -286,6 +286,8 @@ function vd(&$value, $default = null)
 }
 
 /**
+ * Convert CDbCriteria to SQL string
+ * 
  * @param CDbCriteria $criteria
  * @param CActiveRecord $model
  * @return string
