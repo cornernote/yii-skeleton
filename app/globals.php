@@ -290,8 +290,12 @@ function vd(&$value, $default = null)
  * @param CActiveRecord $model
  * @return string
  */
-function criteria_sql($criteria, $model)
+function criteriaSql($criteria, $model)
 {
     $command = $model->getCommandBuilder()->createFindCommand($model->getTableSchema(), $criteria, $model->getTableAlias());
-    return $command->getText();
+    $params = array();
+    foreach ($criteria->params as $k => $v) {
+        $params[$k] = is_string($v) ? '"' . $v . '"' : $v;
+    }
+    return strtr($command->getText(), $params);
 }
