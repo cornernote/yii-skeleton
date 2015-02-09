@@ -176,6 +176,7 @@ return array(
         'urlManager' => array(
             'urlFormat' => isset($_GET['r']) ? 'get' : 'path', // allow filters in audit/index work
             'showScriptName' => false,
+            'urlSuffix' => '/',
             'rules' => array(
                 // account
                 '<action:(login|logout|signup)>/*' => '/account/<action>',
