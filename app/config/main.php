@@ -248,11 +248,15 @@ return array(
             //'autoCreateTables' => false,
             'adminUsers' => array('admin'),
             'userViewUrl' => array('/user/view', 'id' => '--user_id--'),
+            'gridViewWidget' => 'dressing.widgets.YdGridView',
+            'detailViewWidget' => 'dressing.widgets.YdDetailView',
         ),
         'email' => array(
             'class' => 'email.EmailModule',
             //'autoCreateTables' => false,
             'adminUsers' => array('admin'),
+            'gridViewWidget' => 'dressing.widgets.YdGridView',
+            'detailViewWidget' => 'dressing.widgets.YdDetailView',
         ),
         'menu' => array(
             'class' => 'menu.MenuModule',
