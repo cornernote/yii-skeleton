@@ -14,7 +14,7 @@
 		"crisu83/yiistrap": "dev-master",
 		"fortawesome/font-awesome": "dev-master",
 		"malyshev/yii-debug-toolbar": "dev-master",
-		"svyatov/yii-shortcut": "dev-master",
+		"svyatov/yii-shortcut": "dev-master"
 	},
 	"scripts": {
 		"post-install-cmd": [
