@@ -8,7 +8,7 @@
 		"cornernote/yii-email-module": "dev-master",
 		"cornernote/yii-menu-module": "dev-master",
 		"cornernote/yii-return-url": "dev-master",
-		"cornernote/yii-extended-date-time-formatting-behavior": "dev-master"
+		"cornernote/yii-extended-date-time-formatting-behavior": "dev-master",
 		"cornernote/gii-tasty-templates": "dev-master",
 		"cornernote/gii-modeldoc-generator": "dev-master",
 		"crisu83/yiistrap": "dev-master",
